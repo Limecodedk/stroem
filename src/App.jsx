@@ -2,33 +2,64 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './styles/App.scss'
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
+
+import Layout from './layout/Layout'
+/* Import Public */
+import Home from './pages/Home'
+import AboutUs from './pages/AboutUs'
+import Services from './pages/Services'
+import FAQ from './pages/Faq';
+import News from './pages/News';
+import ContactUs from './pages/ContactUs';
+import Login from './pages/Login';
+/* Import Admin */
+import AdminLayout from './layout/admin/AdminLayout';
+import AdminDashboard from './pages/admin/AdminDashboard';
+import AdminNews from './pages/admin/AdminNews';
+import AdminAbout from './pages/admin/AdminAbout';
+import AdminBooking from './pages/admin/AdminBooking';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <>
+        {/* Public */}
+        <Route path='/' element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path='/omos' element={<AboutUs />} />
+          <Route path='/service' element={<Services />} />
+          <Route path='/faq' element={<FAQ />} />
+          <Route path='/nyheder' element={<News />} />
+          <Route path='/kontakt' element={<ContactUs />} />
+          <Route path='/login' element={<Login />} />
+        </Route>
+
+        {/* Admin */}
+        <Route path='/admin' element={<AdminLayout />} >
+
+          <Route index element={<AdminDashboard />} />
+          <Route path='/admin/service' element={<AdminNews />} />
+          <Route path='/admin/service' element={<AdminAbout />} />
+          <Route path='/admin/service' element={<AdminBooking />} />
+        </Route>
+
+
+      </>
+    )
+  )
+
+
+
+
+
+
+
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <main>
+      <RouterProvider router={router} />
+    </main>
   )
 }
 
