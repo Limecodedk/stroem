@@ -30,10 +30,121 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #000000;
   text-decoration: inherit;
 }
 
-a:hover {
-  color: #535bf2;
+
+.btn {
+  display: inline-block;
+  background-color: $orange;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  text-transform: uppercase;
+}
+
+.textOrange {
+  color: $orange;
+}
+
+
+/* header */
+.headerContainer {
+  background-color: $Onyx;
+  padding: .6em 0;
+  position: relative;
+
+  .headerTopbar {
+    display: flex;
+    justify-content: space-between;
+    width: 1000px;
+    margin: 0 auto;
+
+    .logo {
+      margin-bottom: 15px;
+
+      img {
+        width: 150px;
+        height: 50px;
+      }
+    }
+
+    .contact {
+      display: flex;
+      gap: 2em;
+      padding-top: 15px;
+      font-size: .8rem;
+
+      a {
+        color: $white;
+      }
+    }
+
+    .contactIcon {
+      color: $orange;
+      margin-right: 10px;
+    }
+  }
+
+  .navBar {
+    display: flex;
+    flex-direction: columns;
+    gap: 2em;
+    background-color: $white;
+    padding: 1em 30px;
+    width: 1000px;
+    position: absolute;
+    left: 25%;
+    top: 70%;
+    border-radius: 8px;
+
+    li {
+      list-style-type: none;
+    }
+
+    .active {
+      color: $orange;
+    }
+  }
+}
+
+/* Footer */
+
+.footerContainer {
+  background-color: $Onyx;
+  padding: 4em 0;
+
+  .footerContent {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2em;
+    width: 1000px;
+    margin: 0 auto;
+
+    ul {
+      li {
+        list-style-type: none;
+        margin: 15px 0;
+
+        a {
+          color: $white;
+        }
+      }
+    }
+
+  }
+
+  .footerCopyrigt {
+    display: flex;
+    flex-direction: column;
+    columns: 1/2;
+    row-gap: 1;
+  }
+
+  .footerSocial {
+    column-span: 1/-1;
+    display: flex;
+
+  }
 }
