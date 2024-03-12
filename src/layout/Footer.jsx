@@ -77,7 +77,7 @@ const Footer = () => {
             <h3>Nyhedsbrev</h3>
             <p>Tilmeld dig vores nyhedsbrev her</p>
             <form action="">
-              <input type="email" name="newsSubscription" required />
+              <input type="email" name="newsSubscription" placeholder='Din Email' required />
               <button type="submit" className='btn'>Tilmeld</button>
             </form>
           </div>

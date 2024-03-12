@@ -55,17 +55,15 @@ const Testimonial = () => {
 
       <div className="testimonialSlider">
         {data?.slice(currentTestimonial, currentTestimonial + 3).map((item, index) => (
-          <>
-            <div key={index} className={`testimonialCard ${index === 1 ? 'active' : ''}`}>
-              <img src={`http://localhost:5333/images/testimonial/${item.image}`} alt="" />
+          <div key={index} className={`testimonialCard ${index === 1 ? 'active' : ''}`}>
+            <img src={`http://localhost:5333/images/testimonial/${item.image}`} alt="" />
 
-              <div className='sliderContent'>
-                <h3>{item.name}</h3>
-                <p className='textOrange'>{item.title}</p>
-                <p>{item.review}</p>
-              </div>
+            <div className='sliderContent'>
+              <h3>{item.name}</h3>
+              <p className='textOrange'>{item.title}</p>
+              <p>{item.review}</p>
             </div>
-          </>
+          </div>
         ))}
       </div>
 

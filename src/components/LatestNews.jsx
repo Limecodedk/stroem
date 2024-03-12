@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import useRequestData from '../hooks/useRequestData'
 import { Link } from 'react-router-dom';
+import parse from 'html-react-parser';
+
 
 const LatestNews = () => {
   const { data, isLoading, error, makeRequest } = useRequestData();
@@ -30,15 +32,19 @@ const LatestNews = () => {
       <div className="newsCardContainer">
         {
           latestNews?.map((item, index) => (
-            <div className="newsCard">
-              <div className='newsCardHead'>
-                <img src={`http://localhost:5333/images/news/${item.image}`} alt="" />
-                <div className='newsCardDate'>
-                  <p>{item.received}</p>
+            <div className="newsCard" key={index}>
+              <Link to={`/nyhed/${item._id}`}>
+                <div className='newsCardHead'>
+                  <img src={`http://localhost:5333/images/news/${item.image}`} alt="" />
+                  <div className='newsCardDate'>
+                    <p>{item.received}</p>
+                  </div>
                 </div>
-              </div>
-              <h2>{item.title}</h2>
-              <p>{item.content}</p>
+                <div className='newsCardContent'>
+                  <h2>{item.title}</h2>
+                  <p>{parse(item.content)}</p>
+                </div>
+              </Link>
             </div>
           ))
         }
@@ -46,7 +52,7 @@ const LatestNews = () => {
       <Link className='btn'>
         Flere nyheder
       </Link>
-    </section>
+    </section >
   )
 }
 
