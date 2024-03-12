@@ -3,6 +3,7 @@ import { useParams, useLocation, Link } from 'react-router-dom';
 import PageHeader from '../../components/PageHeader';
 import useRequestData from '../../hooks/useRequestData';
 import { FaRegComments, FaCalendarAlt } from 'react-icons/fa';
+import NewsArchive from '../../components/NewsArchive';
 
 const SingleNews = () => {
   const { data, isLoading, error, makeRequest } = useRequestData();
@@ -89,19 +90,7 @@ const SingleNews = () => {
         </article>
         <aside className="newsArchive">
           <h3>Arkiv:</h3>
-          <article className="newsArchiveCard">
-            {dataAll
-              ?.slice(4, 8).map((item, index) => (
-                <div key={index}>
-                  <Link to={'/'}>
-                    <img src={`http://localhost:5333/images/news/${item.image}`} alt="" />
-                    <p>{item.content.substring(0, 50)}...</p>
-                    <p><FaCalendarAlt className='newsArchiveIcon' /> {item.received}</p>
-                  </Link>
-                  <div className="archiveCardLine"></div>
-                </div>
-              ))}
-          </article>
+          <NewsArchive data={dataAll} />
         </aside>
       </div>
     </section>

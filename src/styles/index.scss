@@ -19,9 +19,6 @@
   line-height: 1.5;
   font-weight: 400;
 
-  /*   color-scheme: light dark;
-  background-color: #242424; */
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -99,13 +96,32 @@ a {
     }
   }
 
+  .search {
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    transform: translateY(-50%);
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid $sonic-silver;
+    padding-left: 10px;
+  }
+
+  .searchIcon {
+    position: absolute;
+    top: 50%;
+    right: 40px;
+    transform: translateY(-50%);
+    color: $eerie-black;
+  }
+
+
   .headerTopbar {
     position: relative;
     width: 100%;
     max-width: 1000px;
     display: flex;
     justify-content: space-between;
-
     color: $white;
 
     .logo {
@@ -147,7 +163,6 @@ a {
     margin: 0 auto;
   }
 }
-
 
 /* HOMEPAGE */
 
@@ -447,46 +462,6 @@ a {
 
 /* OurTeam section */
 
-/* .teamContainer {
-  margin: 2em auto;
-  width: 1000px;
-
-  .teamHeading {
-    text-align: center;
-    margin-bottom: 2em;
-  }
-
-  .teamPeople {
-    position: relative;
-    display: flex;
-    gap: 25px;
-    justify-content: space-around;
-
-    img {
-      object-fit: cover;
-      height: 400px;
-    }
-
-    .teamContent {
-
-      color: $white;
-      padding: 2em 1.5em;
-      height: 150px;
-      width: 250px;
-      text-align: center;
-      background-color: $orange;
-    }
-
-    .teamSocial {
-      svg {
-        margin: 10px 5px;
-      }
-    }
-  }
-
-}
- */
-
 .teamContainer {
   margin: 2em auto;
   width: 1000px;
@@ -608,14 +583,20 @@ a {
   .footerCopyrigt {
     display: flex;
     flex-direction: column;
-    columns: 1/2;
+    grid-column: 1/3;
     row-gap: 1;
+    justify-content: space-between;
   }
 
   .footerSocial {
-    column-span: 1/-1;
+    grid-column: 4/-1;
     display: flex;
 
+    .socialMedia {
+      margin: .2em;
+      font-size: 20px;
+
+    }
   }
 }
 
@@ -954,5 +935,107 @@ a {
     }
 
 
+  }
+}
+
+.serviceSection {
+  .selectedServiceContainer {
+    display: flex;
+    width: 1000px;
+    margin: 0 auto;
+    gap: 1.5em
+  }
+
+  .serviceNav {
+    .serviceBox {
+      display: block;
+      width: 400px;
+      height: 40px;
+      padding: .5em;
+      margin: .5em 0;
+      border: .5px solid $sonic-silver;
+      border-radius: 5px;
+      cursor: pointer;
+      user-select: none;
+
+      &:hover {
+        background-color: $orange;
+        color: $white;
+      }
+    }
+
+    .arrows {
+      font-size: 20px;
+    }
+
+    .active {
+      background-color: $orange;
+      color: $white;
+    }
+  }
+
+  .serviceContent {
+    width: 100%;
+    margin-bottom: 5em;
+
+    img {
+      width: 550px;
+    }
+
+    p {
+      margin: 1em 0;
+    }
+
+    ul,
+    ol {
+      margin-left: 20px;
+    }
+  }
+}
+
+/* About Page */
+
+.aboutSection {
+
+  .aboutHeader {
+    width: 1000px;
+    margin: 2em auto;
+    text-align: center;
+  }
+
+
+  .aboutContainer {
+    width: 1000px;
+    margin: 2em auto;
+    display: flex;
+    gap: 5em;
+
+    .aboutContent {
+
+      p {
+        margin: 1em 0;
+      }
+
+      .aboutText {
+        margin: 1em 0;
+
+        ul {
+          margin: 1em 0;
+          padding-left: 20px;
+          list-style-type: circle;
+        }
+      }
+    }
+
+    .aboutImage {
+      width: 1250px;
+
+
+      img {
+        object-fit: cover;
+        width: 100%;
+        border-radius: 5px;
+      }
+    }
   }
 }

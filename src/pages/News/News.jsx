@@ -4,6 +4,7 @@ import PageHeader from '../../components/PageHeader';
 import useRequestData from '../../hooks/useRequestData';
 import { FaRegComments, FaCalendarAlt } from 'react-icons/fa';
 import parse from 'html-react-parser';
+import NewsArchive from '../../components/NewsArchive';
 
 const News = () => {
   const { data, isLoading, error, makeRequest } = useRequestData();
@@ -99,20 +100,7 @@ const News = () => {
         </div>
         <aside className="newsArchive">
           <h3>Arkiv:</h3>
-          <article className="newsArchiveCard">
-            {data
-              ?.slice(4, 8)
-              .map((item, index) => (
-                <div key={index}>
-                  <Link to={'/'}>
-                    <img src={`http://localhost:5333/images/news/${item.image}`} alt="" />
-                    <p>{item.content.substring(0, 50)}...</p>
-                    <p><FaCalendarAlt className='newsArchiveIcon' /> {item.received}</p>
-                  </Link>
-                  <div className="archiveCardLine"></div>
-                </div>
-              ))}
-          </article>
+          <NewsArchive data={data} />
         </aside>
       </div>
     </section >

@@ -49,7 +49,7 @@ const LatestNews = () => {
           ))
         }
       </div>
-      <Link className='btn'>
+      <Link className='btn' to={'/nyheder'}>
         Flere nyheder
       </Link>
     </section >

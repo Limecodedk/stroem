@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import useRequestData from '../hooks/useRequestData'
-import { MdPlace, MdOutlineAccessTime, MdLocalPhone } from "react-icons/md";
+import { MdPlace, MdOutlineAccessTime, MdLocalPhone, MdSearch } from "react-icons/md";
 
 const Header = () => {
   const { data, isLoading, error, makeRequest } = useRequestData();
@@ -64,8 +64,9 @@ const Header = () => {
               </li>
             </ul>
           ))}
-          <div>
-            <input type="text" name="search" placeholder='Søg' />
+          <div className='searchContainer'>
+            <input type="text" name="search" className="search" placeholder='Søg' />
+            <MdSearch className="searchIcon" />
           </div>
         </nav>
       </header>

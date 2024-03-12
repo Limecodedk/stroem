@@ -1,12 +1,55 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import useRequestData from '../hooks/useRequestData'
+import { FaTwitter, FaVimeo, FaLinkedin, FaFacebook } from 'react-icons/fa';
+
+const myMenu = [
+  {
+    "title": "> Foride",
+    "link": "/"
+  },
+  {
+    "title": "> Om os",
+    "link": "/omos"
+  },
+  {
+    "title": "> Service",
+    "link": "/service"
+  },
+  {
+    "title": "> FAQ",
+    "link": "/faq"
+  },
+  {
+    "title": "> Nyheder",
+    "link": "/nyheder"
+  },
+  {
+    "title": "> Kontakt os",
+    "link": "/kontakt"
+  }
+];
 
 
 const Footer = () => {
   const { data, isLoading, error, makeRequest } = useRequestData();
   const date = new Date();
   const year = date.getFullYear();
+  const renderIcon = (iconName) => {
+    switch (iconName) {
+      case "fa-twitter":
+        return <FaTwitter />;
+      case "fa-vimeo":
+        return <FaVimeo />;
+      case "fa-linkedin":
+        return <FaLinkedin />;
+      case "fa-facebook":
+        return <FaFacebook />;
+      default:
+        return null;
+    }
+  };
+
 
   useEffect(() => {
 
@@ -14,32 +57,7 @@ const Footer = () => {
 
   }, [])
 
-  const myMenu = [
-    {
-      "title": "> Foride",
-      "link": "/"
-    },
-    {
-      "title": "> Om os",
-      "link": "/omos"
-    },
-    {
-      "title": "> Service",
-      "link": "/service"
-    },
-    {
-      "title": "> FAQ",
-      "link": "/faq"
-    },
-    {
-      "title": "> Nyheder",
-      "link": "/nyheder"
-    },
-    {
-      "title": "> Kontakt os",
-      "link": "/kontakt"
-    }
-  ]
+
 
   return (
     <>
@@ -92,11 +110,9 @@ const Footer = () => {
 
           <div className='footerSocial'>
             {data?.some.map((item, index) => (
-              <span key={index}>
-                {item.icon}
-              </span>
-
-
+              <a href={item.link} key={index} target="_blank" >
+                <i className='socialMedia'>{renderIcon(item.icon)}</i>
+              </a>
             ))}
           </div>
         </div>
