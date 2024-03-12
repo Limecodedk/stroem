@@ -1,11 +1,7 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './styles/App.scss'
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
 
-import Layout from './layout/Layout'
 /* Import Public */
+import Layout from './layout/Layout'
 import Home from './pages/Home'
 import AboutUs from './pages/AboutUs'
 import Services from './pages/Services'
@@ -17,6 +13,7 @@ import Login from './pages/Login';
 import AdminLayout from './layout/admin/AdminLayout';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminNews from './pages/admin/AdminNews';
+import AdminNewsEdit from './pages/admin/AdminNewsEdit'
 import AdminAbout from './pages/admin/AdminAbout';
 import AdminBooking from './pages/admin/AdminBooking';
 import SingleNews from './pages/News/SingleNews'
@@ -39,11 +36,11 @@ function App() {
 
         {/* Admin */}
         <Route path='/admin' element={<AdminLayout />} >
-
           <Route index element={<AdminDashboard />} />
-          <Route path='/admin/service' element={<AdminNews />} />
-          <Route path='/admin/service' element={<AdminAbout />} />
-          <Route path='/admin/service' element={<AdminBooking />} />
+          <Route path='/admin/news' element={<AdminNews />} />
+          <Route path='/admin/news/edit/:id' element={<AdminNewsEdit />} />
+          <Route path='/admin/about' element={<AdminAbout />} />
+          <Route path='/admin/booking' element={<AdminBooking />} />
         </Route>
 
 

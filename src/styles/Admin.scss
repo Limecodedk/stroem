@@ -1,0 +1,217 @@
+/* 
+* Clobal StyleSheet
+
+*/
+
+// Import Variables
+@import 'variables';
+
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 30px;
+
+  .headerNav {
+    ul {
+      display: flex;
+      margin: 15px 30px;
+
+      li {
+        margin: 0 15px;
+        list-style-type: none;
+      }
+    }
+  }
+}
+
+/* Login */
+.loginSection {
+
+  .loginForm {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 0 auto;
+    align-self: center;
+    justify-content: center;
+
+    .formular {
+      display: flex;
+      flex-direction: column;
+
+      input {
+        height: 40px;
+        margin: 10px 0;
+        padding-left: 11px;
+        border-radius: 8px;
+        border: none;
+      }
+
+      button {
+        width: 200px;
+        padding: 15px 25px;
+        background-color: #535bf2;
+        border: none;
+        border-radius: 8px;
+      }
+
+    }
+
+
+  }
+}
+
+/* Admin layout*/
+.AdminlayoutContainer {
+  display: flex;
+}
+
+/* AdminSidebar */
+.adminSideBarContainer {
+  width: 250px;
+  height: 100vh;
+  background-color: $Onyx;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  margin-right: 15px;
+
+  .adminSideBarNav {
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  .adminSideBarLogo {
+    padding: 20px;
+
+    h2 {
+      margin: 0;
+      color: $orange;
+    }
+
+    p {
+      color: $white;
+    }
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      padding: 10px 20px;
+
+      &:hover {
+        background-color: #555;
+      }
+
+      a {
+        color: #fff;
+        text-decoration: none;
+      }
+
+      ul {
+        list-style: none;
+        padding-left: 20px;
+
+        li {
+          padding: 5px 0;
+
+          &:hover {
+            background-color: #777;
+          }
+        }
+      }
+    }
+  }
+
+  .menuIcon {
+    margin-right: 15px;
+  }
+
+  .subMenuIcon {
+    margin-left: 5px;
+    font-size: 10px;
+  }
+}
+
+/* Footer */
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 20px 0;
+}
+
+/* Tabel  */
+table {
+  width: 900px;
+  border-collapse: collapse;
+  margin-top: 20px;
+
+
+  thead {
+    background-color: $sonic-silver;
+    color: #fff;
+  }
+
+  th,
+  td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #555;
+  }
+
+  tr:hover {
+    background-color: $cultured;
+  }
+
+  td:nth-child(3),
+  td:nth-child(4) {
+    cursor: pointer;
+  }
+
+  td:last-child,
+  th:last-child {
+    text-align: center;
+  }
+}
+
+/* Admin News edit page */
+
+.NewsEditContainer {
+  width: 1000px;
+  margin: 2em auto;
+
+  h1 {
+    margin-bottom: 2em;
+  }
+
+  .newsForm {
+    display: flex;
+    flex-direction: column;
+
+    input {
+      height: 40px;
+      border-radius: 5px;
+      outline: none;
+      margin: 5px 0;
+      border: 1px solid $sonic-silver;
+      padding-left: 11px;
+    }
+
+    input[type='file'] {
+      border: none;
+      padding: 0;
+    }
+
+    textarea {
+      resize: none;
+      padding: 10px;
+    }
+
+  }
+}

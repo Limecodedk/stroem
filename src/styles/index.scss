@@ -25,13 +25,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/*Global Link */
 a {
   font-weight: 500;
   color: #000000;
   text-decoration: inherit;
 }
 
-
+/* Global button */
 .btn {
   display: inline-block;
   background-color: $orange;
@@ -42,6 +43,7 @@ a {
   text-transform: uppercase;
 }
 
+/* Global Text color */
 .textOrange {
   color: $orange;
 }
@@ -58,7 +60,6 @@ a {
     }
   }
 }
-
 
 /* header */
 
@@ -600,7 +601,6 @@ a {
   }
 }
 
-
 /* FAQ Page */
 //FAQ accordion
 .faqAccordion {
@@ -1127,8 +1127,4 @@ a {
       }
     }
   }
-
-
-
-
 }
