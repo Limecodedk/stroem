@@ -92,7 +92,11 @@ const Footer = () => {
 
           <div className='footerSocial'>
             {data?.some.map((item, index) => (
-              <i>{item.icon}</i>
+              <span key={index}>
+                {item.icon}
+              </span>
+
+
             ))}
           </div>
         </div>
