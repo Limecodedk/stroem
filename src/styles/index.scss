@@ -231,7 +231,6 @@ a {
   .slider {
     position: relative;
 
-
     .sliderImage {
       position: relative;
     }
@@ -246,48 +245,36 @@ a {
       z-index: 99;
       color: $white;
       text-align: center;
-      animation: slideIn 0.5s forwards;
+      animation: myAnim ease 1.5s normal forwards;
 
       span {
         font-size: 4rem;
       }
-
     }
 
     .sliderButton {
       position: absolute;
-      top: 75%;
+      top: 70%;
       left: 50%;
       transform: translate(-50%, -50%);
       z-index: 99;
-      animation: slideUp 0.5s forwards;
     }
   }
 
+  @keyframes myAnim {
+    0% {
+      opacity: 0;
+      left: 0%;
+    }
+
+    100% {
+      opacity: 1;
+      left: 50%
+    }
+  }
 
 }
 
-
-
-@keyframes slideIn {
-  from {
-    left: 100%;
-  }
-
-  to {
-    left: 50%;
-  }
-}
-
-@keyframes slideUp {
-  from {
-    bottom: -50px;
-  }
-
-  to {
-    bottom: 40px;
-  }
-}
 
 
 /* About Section */
@@ -674,6 +661,14 @@ a {
       font-size: 20px;
 
     }
+  }
+
+  .backToTop {
+    position: relative;
+    transform: rotate(90deg);
+    width: 30px;
+    left: 90%;
+    cursor: pointer;
   }
 }
 

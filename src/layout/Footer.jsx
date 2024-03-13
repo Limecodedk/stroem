@@ -75,6 +75,12 @@ const Footer = () => {
     }
   }, [dataSubscrip])
 
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  };
 
   return (
     <>
@@ -138,6 +144,9 @@ const Footer = () => {
               </a>
             ))}
           </div>
+        </div>
+        <div className="backToTop btn" onClick={handleScrollToTop}>
+          &#10092;
         </div>
       </footer >
 
