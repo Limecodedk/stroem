@@ -30,9 +30,10 @@ const myMenu = [
   }
 ];
 
-
 const Footer = () => {
+
   const { data, isLoading, error, makeRequest } = useRequestData();
+  const { data: dataSubscrip, isLoading: isLoadingSubscrip, error: errorSubscrip, makeRequest: makeRequestSubscrip } = useRequestData();
   const date = new Date();
   const year = date.getFullYear();
   const renderIcon = (iconName) => {
@@ -50,13 +51,19 @@ const Footer = () => {
     }
   };
 
-
   useEffect(() => {
-
     makeRequest("http://localhost:5333/contactinformation")
-
   }, [])
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    let fd = new FormData(event.target)
+    await makeRequestSubscrip("http://localhost:5333/newssubscription",
+      {
+        "Content-Type": "multipart/form-data"
+      }, null, "POST", fd
+    )
+  }
 
 
   return (
@@ -70,7 +77,7 @@ const Footer = () => {
           </div>
           <div>
             <h3>Link</h3>
-            {myMenu.map((item, index) => (
+            {myMenu?.map((item, index) => (
               <ul key={index}>
                 <li>
                   <Link to={item.link}>
@@ -94,8 +101,8 @@ const Footer = () => {
           <div>
             <h3>Nyhedsbrev</h3>
             <p>Tilmeld dig vores nyhedsbrev her</p>
-            <form action="">
-              <input type="email" name="newsSubscription" placeholder='Din Email' required />
+            <form onSubmit={event => handleSubmit(event)}>
+              <input type="email" name="email" placeholder='Din Email' required />
               <button type="submit" className='btn'>Tilmeld</button>
             </form>
           </div>

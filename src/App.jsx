@@ -17,6 +17,7 @@ import AdminNewsEdit from './pages/admin/AdminNewsEdit'
 import AdminAbout from './pages/admin/AdminAbout';
 import AdminBooking from './pages/admin/AdminBooking';
 import SingleNews from './pages/News/SingleNews'
+import AdminNewsCreate from './pages/admin/AdminNewsCreate'
 
 function App() {
   const router = createBrowserRouter(
@@ -39,6 +40,7 @@ function App() {
           <Route index element={<AdminDashboard />} />
           <Route path='/admin/news' element={<AdminNews />} />
           <Route path='/admin/news/edit/:id' element={<AdminNewsEdit />} />
+          <Route path='/admin/news/create' element={<AdminNewsCreate />} />
           <Route path='/admin/about' element={<AdminAbout />} />
           <Route path='/admin/booking' element={<AdminBooking />} />
         </Route>

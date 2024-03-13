@@ -34,7 +34,7 @@ const AdminSidebar = () => {
         },
         {
           "title": "Opret nyhed",
-          "to": "/admin/news/"
+          "to": "/admin/news/create"
         }
       ]
     },

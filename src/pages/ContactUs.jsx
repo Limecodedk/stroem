@@ -11,6 +11,15 @@ const ContactUs = () => {
     makeRequest('http://localhost:5333/contactinformation');
   }, []);
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    let fd = new FormData(event.target)
+    await makeRequest("http://localhost:5333/contact",
+      {
+        "Content-Type": "multipart/form-data"
+      }, null, "POST", fd
+    )
+  }
 
   return (
     <section className='contactSection'>
@@ -51,11 +60,11 @@ const ContactUs = () => {
           </div>
         </div>
       </div>
-      <div className="contactFormContainer">
+      <div className="contactFormContainer" onSubmit={e => handleSubmit(event)}>
         <div className='contact'>
           <h2>Kontakt os</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio voluptatem totam ab obcaecati dolorem, doloremque quia impedit!</p>
-          <form className="contactForm">
+          <form className="contactForm" >
             <div className='contactFormContainer'>
               <div className='contactFormInput'>
                 <input type="text" name="name" placeholder='Dit Navn' />
