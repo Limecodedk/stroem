@@ -17,7 +17,7 @@ const AboutStroem = () => {
       <p>
         {data?.teaser}
       </p>
-      <Link to={'/'} className='btn'>
+      <Link to={'/'} className='btn effect1'>
         Læs mere
       </Link>
     </section>

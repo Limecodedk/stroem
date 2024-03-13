@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import useRequestData from '../hooks/useRequestData'
 import { FaTwitter, FaVimeo, FaLinkedin, FaFacebook } from 'react-icons/fa';
@@ -34,6 +34,7 @@ const Footer = () => {
 
   const { data, isLoading, error, makeRequest } = useRequestData();
   const { data: dataSubscrip, isLoading: isLoadingSubscrip, error: errorSubscrip, makeRequest: makeRequestSubscrip } = useRequestData();
+  const [message, setMessage] = useState('');
   const date = new Date();
   const year = date.getFullYear();
   const renderIcon = (iconName) => {
@@ -64,6 +65,15 @@ const Footer = () => {
       }, null, "POST", fd
     )
   }
+
+  useEffect(() => {
+    if (dataSubscrip && dataSubscrip.oprettet) {
+      console.log('oprettet')
+      setMessage('Tak du er nu timeldt vores nyhedsbrev')
+    } else {
+      setMessage('Noget gik galt')
+    }
+  }, [dataSubscrip])
 
 
   return (
@@ -100,11 +110,17 @@ const Footer = () => {
           </div>
           <div>
             <h3>Nyhedsbrev</h3>
-            <p>Tilmeld dig vores nyhedsbrev her</p>
-            <form onSubmit={event => handleSubmit(event)}>
-              <input type="email" name="email" placeholder='Din Email' required />
-              <button type="submit" className='btn'>Tilmeld</button>
-            </form>
+            {dataSubscrip && dataSubscrip.oprettet ? (
+              <p className='textOrange'>{message}</p>
+            ) : (
+              <>
+                <p>Tilmeld dig vores nyhedsbrev her</p>
+                <form onSubmit={event => handleSubmit(event)}>
+                  <input type="email" name="email" placeholder='Din Email' required />
+                  <button type="submit" className='btn effect2'>Tilmeld</button>
+                </form>
+              </>
+            )}
           </div>
 
 

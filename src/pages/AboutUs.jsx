@@ -27,7 +27,7 @@ const AboutUs = () => {
         <div className="aboutContent">
           <div className='aboutText'>
             <div dangerouslySetInnerHTML={{ __html: data?.content }}></div>
-            <Link to={'/kontakt'} className='btn'>
+            <Link to={'/kontakt'} className='btn effect1'>
               Kontakt os
             </Link>
           </div>

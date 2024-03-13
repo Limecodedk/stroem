@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import PageHeader from '../components/PageHeader'
 import { useLocation } from 'react-router-dom';
 import useRequestData from '../hooks/useRequestData';
@@ -6,6 +6,8 @@ import { MdPlace, MdEmail, MdLocalPhone } from "react-icons/md";
 const ContactUs = () => {
   const pathnames = useLocation().pathname.split('/').filter((x) => x);
   const { data, isLoading, error, makeRequest } = useRequestData();
+  const { data: dataPost, isLoading: isLoadingPost, error: errorPost, makeRequest: makeRequestPost } = useRequestData();
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
     makeRequest('http://localhost:5333/contactinformation');
@@ -14,12 +16,21 @@ const ContactUs = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     let fd = new FormData(event.target)
-    await makeRequest("http://localhost:5333/contact",
+    await makeRequestPost("http://localhost:5333/contact",
       {
         "Content-Type": "multipart/form-data"
       }, null, "POST", fd
     )
   }
+
+  useEffect(() => {
+    if (dataPost && dataPost.oprettet) {
+      console.log('oprettet')
+      setMessage('Tak for din besked')
+    } else {
+      setMessage('Noget gik galt')
+    }
+  }, [dataPost])
 
   return (
     <section className='contactSection'>
@@ -64,6 +75,9 @@ const ContactUs = () => {
         <div className='contact'>
           <h2>Kontakt os</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio voluptatem totam ab obcaecati dolorem, doloremque quia impedit!</p>
+          {dataPost && dataPost && dataPost.oprettet && (
+            <p className='textOrange'>{message}</p>
+          )}
           <form className="contactForm" >
             <div className='contactFormContainer'>
               <div className='contactFormInput'>

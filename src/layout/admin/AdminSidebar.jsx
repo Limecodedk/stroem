@@ -69,7 +69,7 @@ const AdminSidebar = () => {
     <aside className='adminSideBarContainer'>
       <header className="adminSideBarLogo">
         <Link to={'/'}>
-          <h2> Strøm</h2>
+          <img src="/public/asssets/logo.png" alt="Stroem logo" />
           <p>Hey Admin!</p>
         </Link>
       </header>

@@ -165,12 +165,8 @@ table {
     border-bottom: 1px solid #555;
   }
 
-  tr:hover {
-    background-color: $cultured;
-  }
-
-  td:nth-child(3),
-  td:nth-child(4) {
+  td:nth-child(5),
+  td:nth-child(6) {
     cursor: pointer;
   }
 
@@ -216,17 +212,25 @@ table {
   }
 }
 
+
 .bookingEditContainer {
   width: 1000px;
   margin: 0 auto;
 
+  .bookingTableContainer {
+    display: flex;
+    justify-content: center;
+    margin: 2em 0;
+  }
+
+  .bookingAcceptForm,
   .bookingNoteForm {
     display: flex;
     flex-direction: column;
     width: 900px;
     margin: 5em auto;
 
-    input {
+    select {
       height: 40px;
       margin: .5em 0;
       border-radius: 5px;

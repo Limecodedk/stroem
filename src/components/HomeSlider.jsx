@@ -16,7 +16,7 @@ const HomeSlider = () => {
     dots: false,
     infinite: true,
     speed: 500,
-    autoplay: false,
+    autoplay: true,
     organicArrows: false,
     arrows: false,
   };

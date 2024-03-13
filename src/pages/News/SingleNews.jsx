@@ -8,7 +8,7 @@ import NewsArchive from '../../components/NewsArchive';
 
 const SingleNews = () => {
   const { data, isLoading, error, makeRequest } = useRequestData();
-  const { data: dataAll, isLoading: isLoadingAll, error: errorAll, makeRequest: makeRequestAll } = useRequestData()
+  const { data: dataAll, isLoading: isLoadingAll, error: errorAll, makeRequest: makeRequestAll } = useRequestData();
   const { id } = useParams();
   const pathnames = useLocation().pathname.split('/').filter((x) => x);
   const [formattedDate, setFormattedDate] = useState('');
@@ -82,11 +82,11 @@ const SingleNews = () => {
           <h2>Skriv en kommentar</h2>
           <form className='singleNewsCommentsForm'>
             <div>
-              <input type="text" name="name" placeholder='Navn' />
-              <input type="email" name="email" placeholder='Email' />
+              <input type="text" name="name" placeholder='Navn' required />
+              <input type="email" name="email" placeholder='Email' required />
             </div>
-            <textarea name="comments" id="" cols="30" rows="10"></textarea>
-            <button type="submit" className='btn'>Send Besked</button>
+            <textarea name="comments" id="" cols="30" rows="10" required></textarea>
+            <button type="submit" className='btn effect2'>Send Besked</button>
           </form>
         </article>
         <aside className="newsArchive">

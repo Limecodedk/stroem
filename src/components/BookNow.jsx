@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import useRequestData from '../hooks/useRequestData'
 
 const BookNow = () => {
-  const { data, isLoading, error, makeRequest } = useRequestData()
+  const { data, isLoading, error, makeRequest } = useRequestData();
+  const [message, setMessage] = useState('');
 
+  //POST Booking formular
   const handleSubmit = async (event) => {
     event.preventDefault();
     let fd = new FormData(event.target)
@@ -14,16 +16,30 @@ const BookNow = () => {
     )
   }
 
+  useEffect(() => {
+    if (data && data.oprettet) {
+      console.log('oprettet')
+      setMessage('Tak din booking er modtaget')
+    } else {
+      setMessage('Noget gik galt')
+    }
+  }, [data])
+
   return (
     <section className='bookNowSection'>
       <div className="bookNowContainer">
         <h2><span>Book</span> <br /> service nu</h2>
-        <form onSubmit={e => handleSubmit(event)}>
-          <input type="text" name="name" placeholder='Dit navn' required />
-          <input type="email" name="email" placeholder='Din Email' required />
-          <input type="tel" name="phone" placeholder='Telefon nr.' />
-          <button type="submit" className='btn'>Send</button>
-        </form>
+        {data && data.oprettet ? (
+          <p>{message}</p>
+        ) : (
+          <form onSubmit={e => handleSubmit(e)}>
+            <input type="text" name="name" placeholder='Dit navn' required />
+            <input type="email" name="email" placeholder='Din Email' required />
+            <input type="tel" name="phone" placeholder='Telefon nr.' />
+            <button type="submit" className='btn effect1'>Send</button>
+          </form>
+        )}
+
       </div>
     </section>
   )
