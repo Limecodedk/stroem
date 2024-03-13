@@ -7,15 +7,26 @@ const AdminAbout = () => {
   const { data, isLoading, error, makeRequest } = useRequestData()
   const { data: dataEdit, isLoading: isLoadingEdit, error: errorEdit, makeRequest: makeRequestEdit } = useRequestData()
   const [quillContent, setQuillContent] = useState("")
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
     makeRequest("http://localhost:5333/about/",)
   }, []);
 
+  useEffect(() => {
+    if (dataEdit && dataEdit.rettet) {
+      console.log('ændret')
+      setMessage('Om os er opdateret')
+    } else {
+      setMessage('Noget gik galt')
+    }
+  }, [dataEdit])
+
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
-    formData.append("content", quillContent); // Tilføj quill-indhold til formulardata
+    formData.append("content", quillContent);
     await makeRequestEdit("http://localhost:5333/about/admin", {
       "Content-Type": "multipart/form-data"
     }, null, "PUT", formData,
@@ -30,6 +41,9 @@ const AdminAbout = () => {
       <div className="NewsEditHeader">
         <h1>Redigere nyhed {data?.title}</h1>
       </div>
+      {dataEdit && dataEdit.rettet && (
+        <p className='textOrange'>{message}</p>
+      )}
       {
         data &&
         < form className='newsForm' onSubmit={e => handleSubmit(e)}>

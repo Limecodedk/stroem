@@ -6,8 +6,11 @@ import { MdDelete } from "react-icons/md";
 const AdminBookingEdit = () => {
   const { id } = useParams()
   const { data, isLoading, error, makeRequest } = useRequestData();
+  const { data: dataUpdate, isLoading: isLoadingUpdate, error: errorUpdate, makeRequest: makeRequestUpdate } = useRequestData();
   const { data: dataEdit, isLoading: isLoadingEdit, error: errorEdit, makeRequest: makeRequestEdit } = useRequestData();
   const { data: dataAccept, isLoading: isLoadingAccept, error: errorAccept, makeRequest: makeRequestAccept } = useRequestData();
+  const { data: dataDelete, isLoading: isLoadingDelete, error: errorDelete, makeRequest: makeRequestDelete } = useRequestData()
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
     makeRequest("http://localhost:5333/booking/admin/" + id,)
@@ -29,6 +32,7 @@ const AdminBookingEdit = () => {
         "Content-Type": "multipart/form-data"
       }, null, "PUT", formData
     )
+    makeRequest("http://localhost:5333/booking/admin/" + id)
   }
 
   const toggleAccept = async (event) => {
@@ -40,7 +44,31 @@ const AdminBookingEdit = () => {
         "Content-Type": "multipart/form-data"
       }, null, "PATCH", formData
     )
+    makeRequest("http://localhost:5333/booking/admin/" + id)
   }
+
+  const handleDelete = async (id, title) => {
+    if (window.confirm("Er du sikker på at du vil slette " + title + "?")) {
+      await makeRequestDelete("http://localhost:5333/booking/admin/" + id,
+        {
+        }, null, "DELETE")
+      makeRequest("http://localhost:5333/booking/admin/" + id)
+    }
+  }
+
+  useEffect(() => {
+    makeRequestUpdate("http://localhost:5333/booking/admin/" + id,)
+  }, [dataDelete, dataAccept, dataEdit])
+
+  useEffect(() => {
+    if (dataDelete) {
+      setMessage('Booking blev slettet.');
+    } else if (dataAccept && dataAccept.rettet) {
+      setMessage('Booking status ændret.');
+    } else if (dataEdit && dataEdit.rettet) {
+      setMessage('Bokking note er ændret')
+    }
+  }, [dataDelete, dataAccept, dataEdit]);
 
   return (
     <section className='bookingEditContainer'>
@@ -73,14 +101,13 @@ const AdminBookingEdit = () => {
           </tbody>
         </table>
       </div>
-      <form className='bookingAcceptForm' onSubmit={toggleAccept}>
+      <form className='bookingAcceptForm'>
         <label htmlFor="accept">Vælg status:</label>
         <select name="accept" defaultValue={"default"} onChange={toggleAccept}>
           <option value="default" disabled>Vælg status</option>
           <option value={true}>Godkendt</option>
           <option value={false}>Ikke godkendt</option>
         </select>
-        <button type='Gem' className='btn'>Gem</button>
       </form>
 
       <form className='bookingNoteForm' onSubmit={e => handleSubmit(e)}>
@@ -88,7 +115,7 @@ const AdminBookingEdit = () => {
         <textarea name="note" cols="30" rows="10" maxLength={50} defaultValue={data?.note}></textarea>
         <button type="submit" className='btn'>Gem</button>
       </form>
-
+      <p className='textOrange'>{message}</p>
     </section>
   )
 }

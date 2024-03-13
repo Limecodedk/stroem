@@ -246,6 +246,7 @@ a {
       z-index: 99;
       color: $white;
       text-align: center;
+      animation: slideIn 0.5s forwards;
 
       span {
         font-size: 4rem;
@@ -255,14 +256,39 @@ a {
 
     .sliderButton {
       position: absolute;
-      top: 65%;
+      top: 75%;
       left: 50%;
       transform: translate(-50%, -50%);
       z-index: 99;
+      animation: slideUp 0.5s forwards;
     }
   }
 
+
 }
+
+
+
+@keyframes slideIn {
+  from {
+    left: 100%;
+  }
+
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    bottom: -50px;
+  }
+
+  to {
+    bottom: 40px;
+  }
+}
+
 
 /* About Section */
 .AboutSection {

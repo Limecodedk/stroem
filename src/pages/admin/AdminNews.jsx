@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import useRequestData from '../../hooks/useRequestData';
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
@@ -7,10 +7,11 @@ import { Link } from 'react-router-dom';
 const AdminNews = () => {
   const { data, isLoading, error, makeRequest } = useRequestData();
   const { data: dataDelete, isLoading: isLoadingDelete, error: errorDelete, makeRequest: makeRequestDelete } = useRequestData()
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
     makeRequest('http://localhost:5333/news');
-  }, []);
+  }, [dataDelete]);
 
 
   const handleDelete = (id, title) => {
@@ -20,11 +21,21 @@ const AdminNews = () => {
         }, null, "DELETE")
     }
   }
+
+  useEffect(() => {
+    if (dataDelete) {
+      setMessage('Nyheden blev slettet.');
+      makeRequest('http://localhost:5333/news'); // Opdater data efter sletning
+    }
+  }, [dataDelete]);
+
+
   return (
     <section>
       <div>
         <h1>Nyheder</h1>
       </div>
+      {dataDelete && <p className='textOrange message'>{message}</p>}
       <table>
         <thead>
           <tr>
@@ -51,7 +62,6 @@ const AdminNews = () => {
           ))}
         </tbody>
       </table>
-
     </section>
   )
 }

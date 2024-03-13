@@ -6,6 +6,18 @@
 // Import Variables
 @import 'variables';
 
+/* message */
+.message {
+  margin: 1em;
+  font-size: 1rem;
+  text-align: center;
+  background-color: $Onyx;
+  padding: 1em;
+  border-radius: 5px;
+  width: 400px;
+  margin: 0 auto;
+}
+
 
 /* Header */
 .header {

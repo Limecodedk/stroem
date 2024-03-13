@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 const AdminBooking = () => {
   const { data, isLoading, error, makeRequest } = useRequestData();
   const { data: dataDelete, isLoading: isLoadingDelete, error: errorDelete, makeRequest: makeRequestDelete } = useRequestData()
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
     makeRequest('http://localhost:5333/booking/admin');
@@ -21,11 +22,19 @@ const AdminBooking = () => {
     }
   }
 
+  useEffect(() => {
+    if (dataDelete) {
+      setMessage('Booking blev slettet.');
+      makeRequest('http://localhost:5333/booking/admin');
+    }
+  }, [dataDelete]);
+
   return (
     <section className='bookingContainer'>
       <div>
         <h1>Nyheder</h1>
       </div>
+      {dataDelete && <p className='textOrange message'>{message}</p>}
       <table>
         <thead>
           <tr>

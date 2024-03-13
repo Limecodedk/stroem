@@ -1,4 +1,5 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import useRequestData from '../../hooks/useRequestData'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
@@ -6,6 +7,9 @@ import 'react-quill/dist/quill.snow.css'
 const AdminNewsCreate = () => {
   const { data, isLoading, error, makeRequest } = useRequestData()
   const [quillContent, setQuillContent] = useState("")
+  const [message, setMessage] = useState('');
+
+  const navigate = useNavigate()
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -18,6 +22,16 @@ const AdminNewsCreate = () => {
     )
   }
 
+  useEffect(() => {
+    if (data && data.oprettet) {
+      console.log('oprettet')
+      setMessage('Nyhed er oprettet')
+      navigate("/admin/news/")
+    } else {
+      setMessage('Noget gik galt')
+    }
+  }, [data])
+
   const refQuill = useRef();
   let toolbarOptions = [['bold', 'italic', 'underline', 'strike', { 'list': 'ordered' }, { 'list': 'bullet' }]];
 
@@ -27,6 +41,9 @@ const AdminNewsCreate = () => {
       <div className="NewsEditHeader">
         <h1>Opret nyhed</h1>
       </div>
+      {data && data.oprettet && (
+        <p className='textOrange'>{message}</p>
+      )}
       < form className='newsForm' onSubmit={e => handleSubmit(e)}>
         <input type="text" name="title" placeholder='Titel' required />
         {/*    <textarea name="content" id="" cols="30" rows="10"  ></textarea> */}
