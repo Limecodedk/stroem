@@ -3,9 +3,22 @@ import useRequestData from '../hooks/useRequestData';
 
 const Testimonial = () => {
   const { data, isLoading, error, makeRequest } = useRequestData();
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     makeRequest("http://localhost:5333/testimonial");
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -20,25 +33,28 @@ const Testimonial = () => {
   const handleMouseMove = (e) => {
     if (clicked) {
       const diff = startX - e.clientX;
-      if (Math.abs(diff) > 100) { // Minimum distance required for swipe
-        if (diff > 0) { // Swipe left
+      if (Math.abs(diff) > 100) {
+        if (diff > 0) {
           nextTestimonial();
-        } else { // Swipe right
+        } else {
           prevTestimonial();
         }
-        setStartX(0); // Reset startX after swipe
-        setClicked(false); // Reset clicked state
+        setStartX(0);
+        setClicked(false);
       }
     }
   };
 
   const nextTestimonial = () => {
-    setCurrentTestimonial((currentTestimonial + 1) % (data.length || 1)); // Ensure data.length exists
+    setCurrentTestimonial((currentTestimonial + 1) % (data.length || 1));
   };
 
   const prevTestimonial = () => {
-    setCurrentTestimonial((currentTestimonial - 1 + (data.length || 1)) % (data.length || 1)); // Ensure data.length exists
+    setCurrentTestimonial((currentTestimonial - 1 + (data.length || 1)) % (data.length || 1));
   };
+
+  // Beregn antallet af testimonials baseret på skærmstørrelsen
+  const testimonialsToShow = windowWidth > 425 ? 3 : 1;
 
   return (
     <section className='testimonialSection' onMouseDown={handleMouseDown} onMouseMove={handleMouseMove}>
@@ -54,7 +70,7 @@ const Testimonial = () => {
       </div>
 
       <div className="testimonialSlider">
-        {data?.slice(currentTestimonial, currentTestimonial + 3).map((item, index) => (
+        {data?.slice(currentTestimonial, currentTestimonial + testimonialsToShow).map((item, index) => (
           <div key={index} className={`testimonialCard ${index === 1 ? 'active' : ''}`}>
             <img src={`http://localhost:5333/images/testimonial/${item.image}`} alt="" />
 

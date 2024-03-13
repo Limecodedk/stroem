@@ -1,10 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import useRequestData from '../hooks/useRequestData'
 import { MdPlace, MdOutlineAccessTime, MdLocalPhone, MdSearch } from "react-icons/md";
+import { IoIosMenu } from "react-icons/io";
 
 const Header = () => {
   const { data, isLoading, error, makeRequest } = useRequestData();
+  const [navBar, setNavBar] = useState(false);
+  const handleNavbarToggle = () => {
+    setNavBar(!navBar);
+  }
 
   useEffect(() => {
 
@@ -54,22 +59,25 @@ const Header = () => {
             </Link>
           </div>
         </div>
-        <nav className='navBar'>
-          {myMenu.map((item, index) => (
-            <ul key={index}>
-              <li>
+        <nav className={navBar ? 'navBar active' : 'navBar'}>
+          <div className="menuIcon" onClick={handleNavbarToggle}>
+            <IoIosMenu />
+          </div>
+          <ul>
+            {myMenu.map((item, index) => (
+              <li key={index}>
                 <Link to={item.link}>
                   {item.title}
                 </Link>
               </li>
-            </ul>
-          ))}
+            ))}
+          </ul>
           <div className='searchContainer'>
             <input type="text" name="search" className="search" placeholder='Søg' />
             <MdSearch className="searchIcon" />
           </div>
         </nav>
-      </header>
+      </header >
 
     </>
   )

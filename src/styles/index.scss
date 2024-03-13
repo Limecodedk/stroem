@@ -75,10 +75,6 @@ a {
     color: $orange;
     border: 1px solid $orange;
   }
-
-  &:hover.effect3 {
-    /* Tilføj din tredje hover-effekt her */
-  }
 }
 
 
@@ -111,13 +107,12 @@ a {
   align-items: center;
   z-index: 99;
 
-  .navBar {
+  .navBar ul {
     display: flex;
     flex-direction: row;
     gap: 2em;
     background-color: $white;
     padding: 1em 30px;
-    width: calc(100% - 60px);
     border-radius: 8px;
     z-index: 1;
     position: absolute;
@@ -135,38 +130,42 @@ a {
       }
     }
 
-
-
-
     .active {
       color: $orange;
     }
   }
 
+  .menuIcon {
+    display: none;
+    cursor: pointer;
+  }
+
   .search {
     position: absolute;
-    top: 50%;
-    right: 30px;
+    top: 98%;
+    right: 13%;
     transform: translateY(-50%);
     height: 40px;
     border-radius: 5px;
     border: 1px solid $sonic-silver;
     padding-left: 10px;
+    z-index: 99;
   }
 
   .searchIcon {
     position: absolute;
-    top: 50%;
-    right: 40px;
+    top: 100%;
+    right: 14%;
     transform: translateY(-50%);
     color: $eerie-black;
+    z-index: 99;
   }
 
 
   .headerTopbar {
     position: relative;
-    width: 100%;
-    max-width: 1000px;
+    width: 1000px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     color: $white;
@@ -233,6 +232,12 @@ a {
 
     .sliderImage {
       position: relative;
+
+      img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
     }
 
     .sliderContent {
@@ -274,8 +279,6 @@ a {
   }
 
 }
-
-
 
 /* About Section */
 .AboutSection {
@@ -452,20 +455,7 @@ a {
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     cursor: grab;
-
-    -webkit-touch-callout: none;
-    /* iOS Safari */
-    -webkit-user-select: none;
-    /* Safari */
-    -khtml-user-select: none;
-    /* Konqueror HTML */
-    -moz-user-select: none;
-    /* Old versions of Firefox */
-    -ms-user-select: none;
-    /* Internet Explorer/Edge */
     user-select: none;
-    /* Non-prefixed version, currently supported by most browsers */
-
   }
 
   .testimonialCard {
@@ -521,7 +511,6 @@ a {
 }
 
 /* OurTeam section */
-
 .teamContainer {
   margin: 2em auto;
   width: 1000px;
@@ -1202,7 +1191,6 @@ a {
 }
 
 /* Login */
-
 .loginContainer {
   height: 57vh;
 
@@ -1235,6 +1223,667 @@ a {
         border: 1px solid $sonic-silver;
       }
 
+    }
+  }
+}
+
+/* Responsiv */
+//1024px
+@media only screen and (max-width: 1024px) {
+
+
+  /* Our Service */
+  .OurServiceContainer {
+    width: 900px; //
+
+    .serviceGrid {
+      gap: .4em; //  
+    }
+
+    .serviceWomen {
+      img {
+        width: 250px;
+        height: 300px;
+      }
+    }
+  }
+
+  /* News */
+  .latestNewsContainer {
+    width: 900px;
+  }
+
+  .newsCardContainer {
+
+    .newsCard {
+      img {
+        width: 300px;
+        height: 200;
+      }
+
+      .newsCardDate {
+        width: 45px;
+        padding: .5em .5em;
+      }
+
+      .newsCardContent {
+        width: 250px;
+        height: 200px;
+      }
+    }
+  }
+}
+
+//768px
+@media only screen and (max-width: 768px) {
+
+  /* header */
+  .headerContainer {
+    display: block;
+
+    .navBar {
+      gap: 1em;
+      width: 700px;
+    }
+
+    .navBar ul {
+      gap: 1em;
+      z-index: 1;
+      width: 700px;
+
+
+      .search {
+        height: 30px;
+      }
+    }
+
+    .headerTopbar {
+      position: relative;
+      width: 600px;
+      display: flex;
+      justify-content: space-between;
+      padding: 1em;
+      color: $white;
+
+      .logo {
+        margin-bottom: 15px;
+
+        img {
+          width: 150px;
+          height: 50px;
+        }
+      }
+
+      .contact {
+        display: flex;
+        gap: 2em;
+        padding-top: 15px;
+        font-size: .8rem;
+
+        a {
+          color: $white;
+        }
+      }
+
+      .contactIcon {
+        color: $orange;
+        margin-right: 10px;
+      }
+    }
+  }
+
+  /* Slider */
+  .sliderContainer {
+    .slider {
+      position: relative;
+
+      .sliderImage {
+        position: relative;
+
+        img {
+          object-fit: cover;
+          width: 100%;
+          height: 450px;
+        }
+      }
+    }
+
+    .sliderContent {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: max-content;
+      transform: translate(-50%, -50%);
+      padding: 10px;
+      z-index: 99;
+      color: $white;
+      text-align: center;
+      animation: myAnim ease 1.5s normal forwards;
+
+      span {
+        font-size: 4rem;
+      }
+    }
+
+    .sliderButton {
+      position: absolute;
+      top: 70%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 99;
+    }
+  }
+
+
+  /* About Section */
+  .AboutSection {
+    width: 700px;
+  }
+
+  /* Our Service */
+  .OurServiceContainer {
+    width: 700px;
+    flex-direction: column;
+    gap: 2em;
+
+    .serviceGrid {
+      gap: .5em;
+
+      .serviceItem {
+        gap: 1em;
+
+        [class^="flaticon-"]:before,
+        [class*=" flaticon-"]:before,
+        [class^="flaticon-"]:after,
+        [class*=" flaticon-"]:after {
+          font-size: 30px;
+        }
+      }
+    }
+  }
+
+  /* Book Now Section */
+  .bookNowSection {
+    background-color: $cultured;
+
+    .bookNowContainer {
+      display: flex;
+      width: 600px;
+      margin: 0 auto;
+      padding: 2em 0;
+      flex-direction: column;
+
+      form {
+        margin-top: 1em;
+        display: flex;
+        flex-direction: column;
+      }
+
+      input {
+        display: flex;
+        flex-direction: column;
+        margin: .5em;
+      }
+
+      button {
+        justify-content: center;
+        margin: .5em auto;
+        width: 250px;
+      }
+    }
+  }
+
+  /* OurTeam section */
+  .teamContainer {
+    width: 600px;
+
+    .teamPeople {
+      .teamPerson {
+        img {
+          height: 300px;
+        }
+      }
+    }
+  }
+
+  /* News */
+  .latestNewsContainer {
+    width: 600px;
+  }
+
+  /* Global Newscard */
+  .newsCardContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 3px;
+    justify-content: center;
+
+    .newsCard {
+      box-shadow: 1px 2px 15px #e7e5e5;
+
+      &:hover {
+        box-shadow: 1px 2px 15px #7d7373;
+        border-radius: 8px;
+      }
+
+      img {
+        object-fit: cover;
+        width: 230px; //
+        height: 150px; //
+      }
+
+      .newsCardDate {
+        width: 45px;
+
+        p {
+          font-size: 1rem;
+        }
+      }
+
+      .newsCardContent {
+        width: 200px;
+        height: fit-content;
+        padding: 0 2em 2em;
+
+        h2 {
+          font-size: 1.2rem;
+          margin: .5em 0;
+
+          &:hover {
+            color: $orange
+          }
+        }
+      }
+    }
+  }
+
+  /* Footer */
+  .footerContainer {
+    font-size: 14px;
+
+    .footerContent {
+      width: 600px;
+
+      ul {
+        li {
+          margin: 15px 0;
+        }
+      }
+    }
+
+    input {
+      height: 30px;
+    }
+  }
+}
+
+//425px
+@media only screen and (max-width: 425px) {
+
+  /* header */
+  .headerContainer {
+    .navBar {
+      display: flex;
+      flex-direction: row;
+      gap: 2em;
+      background-color: $white;
+      padding: 1em 30px;
+      border-radius: 5px 5px 5px 5px;
+      z-index: 1;
+      position: absolute;
+      top: 80%;
+      left: 50%;
+      right: 50%;
+      width: 400px;
+      transform: translateX(-50%);
+
+      .menuIcon {
+        display: block;
+        margin: 0;
+        font-size: 1.5rem;
+        background-color: $Onyx;
+        color: $white;
+        padding: 5px 10px;
+      }
+
+      ul {
+        display: none;
+      }
+
+      li {
+        margin: 10px 0;
+      }
+    }
+
+    .navBar.active ul {
+      display: flex;
+      position: absolute;
+      flex-direction: column;
+      background-color: $white;
+      top: 90%;
+      right: 0%;
+      z-index: 9999;
+      width: 100%;
+      padding: 20px;
+      border-radius: 0 0 5px 5px;
+      box-sizing: border-box;
+      transition: top 0.5s ease-out;
+
+      li {
+        background-color: $Onyx;
+        padding: 1em 10px;
+        margin: 1px;
+
+        a {
+          color: $white;
+        }
+
+        &:hover {
+          background-color: $orange;
+        }
+
+      }
+    }
+
+    .search {
+      top: 50%;
+      right: 30px;
+    }
+
+    .searchIcon {
+      top: 50%;
+      right: 40px;
+    }
+
+    .headerTopbar {
+      max-width: 325px;
+      flex-direction: column;
+
+      .contact {
+        display: flex;
+        flex-direction: column;
+        gap: .5em;
+        padding: .5em 0 4em 0;
+        font-size: 1.2em;
+        text-align: center;
+      }
+    }
+  }
+
+  /* Slider */
+  .sliderContainer {
+    .slider {
+      position: relative;
+
+      .sliderImage {
+        position: relative;
+
+        img {
+          object-fit: cover;
+          width: 100%;
+          height: 350px;
+        }
+      }
+
+      .sliderContent {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: max-content;
+        transform: translate(-50%, -50%);
+        padding: 10px;
+        z-index: 99;
+        color: $white;
+        text-align: center;
+        animation: myAnim ease 1.5s normal forwards;
+
+        span {
+          font-size: 4rem;
+        }
+      }
+
+      .sliderButton {
+        position: absolute;
+        top: 80%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 99;
+      }
+
+    }
+  }
+
+  /* About Section */
+  .AboutSection {
+    width: 300px;
+  }
+
+  /* Our service Section */
+  .OurServiceContainer {
+    width: 370px;
+
+    .serviceGrid {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+
+      .serviceItem {
+        gap: 1.5em;
+      }
+    }
+
+    .serviceWomen {
+      align-self: end;
+
+      img {
+        object-fit: cover;
+        width: 350px;
+        height: 400px;
+      }
+    }
+  }
+
+  /* Book Now Section */
+  .bookNowSection {
+    .bookNowContainer {
+      width: 370px;
+
+      input {
+        margin: .5em;
+      }
+    }
+  }
+
+  /* Testimonial section */
+  .testimonialSection {
+    padding-bottom: 10%;
+
+    .testimonialheading {
+      top: 15%;
+
+    }
+
+    .testimonialSlider {
+      margin-top: -17px;
+    }
+
+    .testimonialCard {
+      width: 300px;
+    }
+  }
+
+  /* OurTeam section */
+  .teamContainer {
+    margin: 2em auto;
+    width: 370px;
+
+    .teamHeading {
+      text-align: center;
+      margin-bottom: 2em;
+    }
+
+    .teamPeople {
+      display: flex;
+      flex-direction: column;
+
+      .teamPerson {
+        margin: 0 auto;
+
+        img {
+          object-fit: cover;
+          height: 400px;
+        }
+      }
+    }
+  }
+
+  /* News */
+  .latestNewsContainer {
+
+    width: 370px;
+    margin: 2em auto;
+  }
+
+  /* Global Newscard */
+  .newsCardContainer {
+    flex-direction: column;
+
+    .newsCard {
+      margin: 1em 0;
+
+      img {
+        width: 350px;
+        height: 100%;
+
+      }
+
+      .newsCardDate {
+        width: 55px;
+        padding: 1em .5em;
+
+        p {
+          text-align: center;
+          color: $white;
+          font-size: 1.3rem;
+        }
+      }
+
+      .newsCardContent {
+        width: 350px;
+        height: 140px;
+        padding: 0 2em 2em;
+
+        h2 {
+          font-size: 1.2rem;
+          margin: .5em 0;
+
+          &:hover {
+            color: $orange
+          }
+        }
+      }
+    }
+  }
+
+  /* Footer */
+  .footerContainer {
+    .footerContent {
+      display: flex;
+      flex-direction: column;
+      width: 370px;
+      margin: 0 auto;
+
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 370px;
+
+      button {
+        width: 150px;
+      }
+    }
+
+    .backToTop {
+      left: 80%;
+    }
+  }
+
+
+}
+
+//374px
+@media only screen and (max-width: 375px) {
+
+  /* header */
+  .headerContainer {
+
+    .navBar {
+      width: 350px;
+
+    }
+
+  }
+
+  /* About Section */
+  .AboutSection {
+    width: 300px;
+  }
+
+  /* Our service Section */
+  .OurServiceContainer {
+    width: 370px;
+  }
+
+  /* Book Now Section */
+  .bookNowSection {
+    .bookNowContainer {
+      width: 370px;
+
+    }
+  }
+
+
+  /* OurTeam section */
+  .teamContainer {
+    width: 370px;
+
+  }
+
+  /* News */
+  .latestNewsContainer {
+    width: 370px;
+    margin: 2em auto;
+  }
+
+  .newsCardContainer {
+
+    img {
+      width: 350px;
+      height: 100%;
+
+    }
+
+    .newsCardContent {
+      width: 350px;
+      height: 140px;
+    }
+  }
+
+  /* Footer */
+  .footerContainer {
+    .footerContent {
+      display: flex;
+      flex-direction: column;
+      width: 300px;
+      margin: 0 auto;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 300px;
     }
   }
 }

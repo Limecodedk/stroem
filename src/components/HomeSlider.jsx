@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 const HomeSlider = () => {
   const { data, isLoading, error, makeRequest } = useRequestData();
-  const [resetAnimation, setResetAnimation] = useState(false); // State to reset animation
+  const [resetAnimation, setResetAnimation] = useState(false);
 
   useEffect(() => {
     makeRequest("http://localhost:5333/slider");
@@ -20,8 +20,8 @@ const HomeSlider = () => {
     autoplay: true,
     organicArrows: false,
     arrows: false,
-    beforeChange: () => setResetAnimation(true), // Reset animation before slide change
-    afterChange: () => setResetAnimation(false), // Reset state after slide change
+    beforeChange: () => setResetAnimation(true),
+    afterChange: () => setResetAnimation(false),
   };
 
   const filteredData = data?.slice(0, 2);
