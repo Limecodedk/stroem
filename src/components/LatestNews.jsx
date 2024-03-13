@@ -42,7 +42,9 @@ const LatestNews = () => {
                 </div>
                 <div className='newsCardContent'>
                   <h2>{item.title}</h2>
-                  <p>{parse(item.content)}</p>
+                  <div>
+                    {parse(item.content)}
+                  </div>
                 </div>
               </Link>
             </div>

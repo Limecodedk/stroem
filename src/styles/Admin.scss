@@ -215,3 +215,30 @@ table {
 
   }
 }
+
+.bookingEditContainer {
+  width: 1000px;
+  margin: 0 auto;
+
+  .bookingNoteForm {
+    display: flex;
+    flex-direction: column;
+    width: 900px;
+    margin: 5em auto;
+
+    input {
+      height: 40px;
+      margin: .5em 0;
+      border-radius: 5px;
+      outline: none;
+      border: 1px solid $sonic-silver;
+      padding-left: 10px;
+    }
+
+    textarea {
+      resize: none;
+      margin: 0 0 2em 0;
+      padding: 10px;
+    }
+  }
+}

@@ -1,6 +1,23 @@
 /* 
-* Clobal StyleSheet
-
+- Clobal StyleSheet
+- Header 
+- Page Subheader
+- Slider
+- About Section
+- Contact us section
+- Our service Section
+- Book Now Section
+- Testimonial section
+- OurTeam section
+- News
+- Footer
+- FAQ Page
+- News Page
+- Global Archive
+- Global Newscard
+- Single News Page
+- About Page
+- Contact Us page 
 */
 
 
@@ -767,6 +784,7 @@ a {
   display: flex;
   flex-direction: row;
   gap: 15px;
+  justify-content: center;
 
   .newsCard {
     background-color: #faf4f4;

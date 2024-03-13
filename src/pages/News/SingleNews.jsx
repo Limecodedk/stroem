@@ -5,6 +5,7 @@ import useRequestData from '../../hooks/useRequestData';
 import { FaRegComments, FaCalendarAlt } from 'react-icons/fa';
 import NewsArchive from '../../components/NewsArchive';
 
+
 const SingleNews = () => {
   const { data, isLoading, error, makeRequest } = useRequestData();
   const { data: dataAll, isLoading: isLoadingAll, error: errorAll, makeRequest: makeRequestAll } = useRequestData()
@@ -64,7 +65,7 @@ const SingleNews = () => {
               </p>
               <h2>{data?.title}</h2>
               <div className='line'></div>
-              <p>{data?.content}</p>
+              <div dangerouslySetInnerHTML={{ __html: data?.content }}></div>
             </div>
           </div>
           {/* Kommentar */}

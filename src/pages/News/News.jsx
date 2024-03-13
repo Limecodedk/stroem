@@ -71,7 +71,7 @@ const News = () => {
                   </div>
                   <div className="newsCardContent">
                     <h2>{item.title}</h2>
-                    <p>{parse(item.content.substring(0, 100))}...</p>
+                    <div>{parse(item.content.substring(0, 100))}...</div>
                     <div className="newsCardLine"></div>
                     <p>
                       <span className='comments'>
