@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import PageHeader from '../components/PageHeader'
 import { Link, useLocation } from 'react-router-dom';
 import useRequestData from '../hooks/useRequestData';
-import parse from 'html-react-parser';
 import OurTeam from '../components/OurTeam';
 import Testimonial from '../components/Testimonial';
 
