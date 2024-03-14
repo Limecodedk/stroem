@@ -113,31 +113,34 @@ a {
   align-items: center;
   z-index: 99;
 
-  .navBar ul {
-    display: flex;
-    flex-direction: row;
-    gap: 2em;
-    background-color: $white;
-    padding: 1em 30px;
-    border-radius: 8px;
-    z-index: 1;
+  .navbarContainer {
     position: absolute;
     top: 70%;
-    left: 50%;
-    right: 50%;
-    width: 1000px;
-    transform: translateX(-50%);
+    background-color: $white;
+    display: flex;
+    flex-direction: row;
+    width: 900px;
+    margin: 0 auto;
+    justify-content: space-between;
+    padding: .5em 15px;
+    border-radius: 5px;
+    box-shadow: 2px 1px 15px $white;
 
-    li {
-      list-style-type: none;
+    .navBar {
+      ul {
+        display: flex;
+        flex-direction: row;
+        gap: 2em;
 
-      & a:hover {
-        color: $orange;
+        li {
+          list-style-type: none;
+          margin: .5em 0;
+        }
       }
     }
   }
 
-  .active a {
+  .activeNav a {
     color: $orange;
   }
 
@@ -146,24 +149,27 @@ a {
     cursor: pointer;
   }
 
+  .searchContainer {
+    display: flex;
+    position: relative;
+    align-self: center;
+  }
+
   .search {
-    position: absolute;
-    top: 100%;
-    right: 12%;
-    transform: translateY(-50%);
-    height: 40px;
+    height: 30px;
     border-radius: 5px;
     border: 1px solid $sonic-silver;
-    padding-left: 10px;
-    z-index: 99;
+    padding-right: 35px;
+    z-index: 98;
+    outline: none;
   }
 
   .searchIcon {
-    position: absolute;
-    top: 100%;
-    right: 13%;
-    transform: translateY(-50%);
     color: $eerie-black;
+    position: absolute;
+    top: 40%;
+    right: 10px;
+    transform: translateY(-50%);
     z-index: 99;
     cursor: pointer;
   }
@@ -219,30 +225,42 @@ a {
 /* HOMEPAGE */
 /* Slider */
 .sliderContainer {
-  z-index: 97;
-
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 98;
-  }
+  position: relative;
+  width: 100%;
 
 
   .slider {
     position: relative;
+    width: 100%;
+    overflow: hidden;
 
-    .sliderImage {
+
+    .slide {
+      display: none;
       position: relative;
+      width: 100%;
 
-      img {
-        object-fit: cover;
-        width: 100%;
-        height: 100%;
+      &.active {
+        display: block;
       }
+    }
+
+    .slideContentContainer {
+      position: relative;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 98;
+    }
+
+    .slide img {
+      width: 100%;
     }
 
     .sliderContent {
@@ -255,7 +273,7 @@ a {
       z-index: 99;
       color: $white;
       text-align: center;
-      animation: myAnim ease 1.5s normal forwards;
+      animation: textAnimation ease 1.5s normal forwards;
 
       span {
         font-size: 4rem;
@@ -264,25 +282,49 @@ a {
 
     .sliderButton {
       position: absolute;
-      top: 70%;
+      top: 100%;
       left: 50%;
       transform: translate(-50%, -50%);
       z-index: 99;
+      margin: 2em 0;
     }
   }
 
-  @keyframes myAnim {
-    0% {
-      opacity: 0;
-      left: 0%;
-    }
+  .sliderControls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 30px;
 
-    100% {
-      opacity: 1;
-      left: 50%
+    .prev,
+    .next {
+      border: 1px solid $white;
+      border-radius: 50%;
+      color: $white;
+      cursor: pointer;
+      z-index: 99;
+      font-size: 25px;
+
+      &.prev {
+        transform: rotate(180deg);
+      }
     }
   }
 
+}
+
+@keyframes textAnimation {
+  0% {
+    opacity: 0;
+    left: 0%;
+  }
+
+  100% {
+    opacity: 1;
+    left: 50%;
+  }
 }
 
 /* About Section */
@@ -1489,42 +1531,11 @@ a {
   /* Slider */
   .sliderContainer {
     .slider {
-      position: relative;
-
-      .sliderImage {
-        position: relative;
-
-        img {
-          object-fit: cover;
-          width: 100%;
-          height: 450px;
+      .sliderContent {
+        span {
+          font-size: 3rem;
         }
       }
-    }
-
-    .sliderContent {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: max-content;
-      transform: translate(-50%, -50%);
-      padding: 10px;
-      z-index: 99;
-      color: $white;
-      text-align: center;
-      animation: myAnim ease 1.5s normal forwards;
-
-      span {
-        font-size: 4rem;
-      }
-    }
-
-    .sliderButton {
-      position: absolute;
-      top: 70%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 99;
     }
   }
 
@@ -1903,45 +1914,96 @@ a {
 
   /* Slider */
   .sliderContainer {
+    position: relative;
+    width: 100%;
+
+
     .slider {
       position: relative;
+      width: 100%;
+      overflow: hidden;
 
-      .sliderImage {
+
+      .slide {
+        display: none;
         position: relative;
+        width: 100%;
 
-        img {
-          object-fit: cover;
-          width: 100%;
-          height: 350px;
+        &.active {
+          display: block;
         }
+      }
+
+      .slideContentContainer {
+        position: relative;
+      }
+
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 97;
+      }
+
+      .slide img {
+        width: 100%;
       }
 
       .sliderContent {
         position: absolute;
-        top: 50%;
+        top: 35%;
         left: 50%;
         width: max-content;
         transform: translate(-50%, -50%);
         padding: 10px;
-        z-index: 99;
+        z-index: 98;
         color: $white;
         text-align: center;
-        animation: myAnim ease 1.5s normal forwards;
+        animation: textAnimation ease 1.5s normal forwards;
 
         span {
-          font-size: 4rem;
+          font-size: 2rem;
         }
       }
 
       .sliderButton {
         position: absolute;
-        top: 80%;
+        top: 100%;
         left: 50%;
         transform: translate(-50%, -50%);
-        z-index: 99;
+        z-index: 97;
+        margin: 1em 0;
+        font-size: 14px;
+        padding: 5px;
       }
-
     }
+
+    .sliderControls {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 30px;
+
+      .prev,
+      .next {
+        border: 1px solid $white;
+        border-radius: 50%;
+        color: $white;
+        cursor: pointer;
+        z-index: 98;
+        font-size: 25px;
+
+        &.prev {
+          transform: rotate(180deg);
+        }
+      }
+    }
+
   }
 
   /* About Section */

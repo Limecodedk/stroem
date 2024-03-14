@@ -18,21 +18,17 @@ const HeaderSearch = () => {
 
   return (
     <>
-      <div className="searchContainer">
-        <div className='searchField'>
-          <form >
-            <input
-              type="text"
-              name="search"
-              className="search"
-              placeholder="Søg"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-          </form>
-          <MdSearch className="searchIcon" onClick={handleSubmit} />
-        </div>
-      </div>
+      <form >
+        <input
+          type="text"
+          name="search"
+          className="search"
+          placeholder="Søg"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </form>
+      <MdSearch className="searchIcon" onClick={handleSubmit} />
     </>
   );
 };

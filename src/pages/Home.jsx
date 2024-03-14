@@ -1,5 +1,4 @@
 import React from 'react'
-import HomeSlider from '../components/HomeSlider'
 import AboutStroem from '../components/AboutStroem'
 import Contact from '../components/Contact'
 
@@ -11,6 +10,7 @@ import LatestNews from '../components/LatestNews'
 
 import Loader from '../components/Loader'
 import { useLoader } from '../context/LoaderContext'
+import Slider from '../components/Slider'
 
 const Home = () => {
   const { loading } = useLoader();
@@ -18,7 +18,7 @@ const Home = () => {
   return (
     <>
       {loading && <Loader />}
-      <HomeSlider />
+      <Slider />
       <AboutStroem />
       <Contact />
       <OurService />

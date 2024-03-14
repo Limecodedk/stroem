@@ -4,9 +4,8 @@ import useRequestData from '../hooks/useRequestData';
 import { MdPlace, MdOutlineAccessTime, MdLocalPhone } from 'react-icons/md';
 import { IoIosMenu } from 'react-icons/io';
 import Headersearch from '../components/Search/HeaderSearch'
-import HeaderNew from './HeaderNavbar';
 
-const Header = () => {
+const HeaderNavbar = () => {
   const { data, isLoading, error, makeRequest } = useRequestData();
   const [navBar, setNavBar] = useState(false);
   const location = useLocation();
@@ -48,36 +47,25 @@ const Header = () => {
 
   return (
     <>
-      <header className="headerContainer">
-        <div className="headerTopbar">
-          <div className="logo">
-            <img src="/public/asssets/logo.png" alt="" />
+      <div className='navbarContainer'>
+        <nav className={navBar ? 'navBar activeNav' : 'navBar'}>
+          <div className="menuIcon" onClick={handleNavbarToggle}>
+            <IoIosMenu />
           </div>
-          <div className="contact">
-            <p>
-              <span className="contactIcon">
-                <MdPlace />
-              </span>
-              {data?.address}
-            </p>
-            <p>
-              <span className="contactIcon">
-                <MdOutlineAccessTime />
-              </span>
-              {data?.openinghours}
-            </p>
-            <Link to={'tel:' + data?.phone}>
-              <span className="contactIcon">
-                <MdLocalPhone />
-              </span>
-              {data?.phone}
-            </Link>
-          </div>
+          <ul>
+            {myMenu.map((item, index) => (
+              <li key={index} className={location.pathname === item.link ? 'activeNav' : ''}>
+                <Link to={item.link}>{item.title}</Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <div className="searchContainer">
+          <Headersearch />
         </div>
-        <HeaderNew />
-      </header>
+      </div>
     </>
-  );
-};
+  )
+}
 
-export default Header;
+export default HeaderNavbar
