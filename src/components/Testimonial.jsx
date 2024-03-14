@@ -75,7 +75,7 @@ const Testimonial = () => {
       <div className="testimonialSlider">
         {data?.slice(currentTestimonial, currentTestimonial + testimonialsToShow).map((item, index) => (
           <div key={index} className={`testimonialCard ${index === 1 ? 'active' : ''}`}>
-            <img src={`http://localhost:5333/images/testimonial/${item.image}`} alt="" />
+            <img src={`http://localhost:5333/images/testimonial/${item.image}`} alt="Kundeanmeldelser profil billeder af kunderne" />
 
             <div className='sliderContent'>
               <h3>{item.name}</h3>

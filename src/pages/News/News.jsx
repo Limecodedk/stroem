@@ -71,7 +71,7 @@ const News = () => {
                 <article key={index} className="newsCard">
                   <Link to={`/nyhed/${item._id}`}>
                     <div className="newsCardHead">
-                      <img src={`http://localhost:5333/images/news/${item.image}`} alt="" />
+                      <img src={`http://localhost:5333/images/news/${item.image}`} alt={item.title} />
                       <div className="newsCardDate">
                         <p>{item.received}</p>
                       </div>

@@ -37,7 +37,7 @@ const HomeSlider = () => {
             <div key={index} className="slider">
               <div className="sliderImage">
                 <div className="overlay"></div>
-                <img src={`http://localhost:5333/images/slider/${item.image}`} alt="Slider" />
+                <img src={`http://localhost:5333/images/slider/${item.image}`} alt="Forside slider" />
                 <div className={`sliderContent slideInLeft${resetAnimation ? ' resetAnimation' : ''}`} dangerouslySetInnerHTML={{ __html: item.caption }}></div>
               </div>
               <div className="sliderButton">

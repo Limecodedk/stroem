@@ -50,7 +50,7 @@ const Services = () => {
           <div className="serviceContent">
             {selectedService && (
               <>
-                <img src={`http://localhost:5333/images/service/${selectedService.image}`} alt="" />
+                <img src={`http://localhost:5333/images/service/${selectedService.image}`} alt="Vores service ydelser indenfor Air Condition, Sikkerhed, stroem, Varme" />
                 <h2>{selectedService.title}</h2>
                 <div>{parse(selectedService.content)}</div>
               </>

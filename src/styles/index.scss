@@ -170,7 +170,10 @@ a {
     transform: translateY(-50%);
     color: $eerie-black;
     z-index: 99;
+    cursor: pointer;
   }
+
+
 
 
   .headerTopbar {
@@ -1238,7 +1241,6 @@ a {
 }
 
 /* Loader */
-
 .loader {
   display: flex;
   flex-direction: column;
@@ -1269,6 +1271,52 @@ a {
 
 }
 
+/* Search Result page */
+.SearchResultContent {
+  width: 1000px;
+  margin: 0 auto;
+
+  h2 {
+    margin: 1em 0;
+    color: $orange;
+  }
+
+  .resultCard {
+    border: 1px solid $sonic-silver;
+    border-radius: 5px;
+    margin: 15px 0;
+    padding: 15px;
+
+    .btn {
+      padding: 5px;
+      margin: 1em 0;
+    }
+
+
+    .newsResultContentContainer {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2em;
+
+      img {
+        width: 200px;
+
+      }
+    }
+  }
+
+  .serviceCard:hover {
+    background-color: $orange;
+
+    a {
+      color: $white;
+    }
+  }
+
+  .resultServices {
+    margin: 1em 0;
+  }
+}
 
 /* Responsiv */
 //1024px
@@ -1378,6 +1426,12 @@ a {
       width: 900px;
     }
   }
+
+  /* Search Result page */
+  .SearchResultContent {
+    width: 900px;
+  }
+
 }
 
 //768px
@@ -1673,31 +1727,6 @@ a {
 
   }
 
-  /* Global Newscard */
-  .newsCardContainer {
-    gap: 15px;
-
-    .newsCard {
-      img {
-        width: 200px;
-      }
-
-      .newsCardDate {
-        width: 55px;
-        padding: .5em;
-
-        p {
-          font-size: 1rem;
-        }
-      }
-
-      .newsCardContent {
-        width: 200px;
-        height: 140px;
-      }
-    }
-  }
-
   /* Single News Page */
   .singleNewsContainer {
     .singleNewsArticleContainer {
@@ -1779,6 +1808,10 @@ a {
     }
   }
 
+  /* Search Result page */
+  .SearchResultContent {
+    width: 650px;
+  }
 }
 
 //425px
@@ -2265,6 +2298,24 @@ a {
       }
     }
   }
+
+  /* Search Result page */
+  .SearchResultContent {
+    width: 350px;
+    margin: 0 auto;
+
+    .resultCard {
+      .newsResultContentContainer {
+        display: flex;
+        flex-direction: column-reverse;
+
+        img {
+          width: 300px;
+        }
+      }
+    }
+  }
+
 }
 
 //374px
@@ -2334,6 +2385,19 @@ a {
       display: flex;
       flex-direction: column;
       width: 300px;
+    }
+  }
+
+  /* Search Result page */
+  .SearchResultContent {
+    width: 300px;
+
+    .resultCard {
+      .newsResultContentContainer {
+        img {
+          width: 250px;
+        }
+      }
     }
   }
 }

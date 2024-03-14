@@ -40,7 +40,7 @@ const AboutUs = () => {
             </div>
           </div>
           <div className="aboutImage">
-            <img src={`http://localhost:5333/images/about/${data?.image}`} alt="" />
+            <img src={`http://localhost:5333/images/about/${data?.image}`} alt="El gruppetavle med sikringer, Måle med multimeter" />
           </div>
         </div>
         <Testimonial />

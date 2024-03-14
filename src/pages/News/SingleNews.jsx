@@ -18,6 +18,7 @@ const SingleNews = () => {
   const pathnames = useLocation().pathname.split('/').filter((x) => x);
   const [formattedDate, setFormattedDate] = useState('');
   const [formattedComments, setFormattedComments] = useState([]);
+  const [messege, setMessage] = useState('')
 
   useEffect(() => {
     makeRequest("http://localhost:5333/news/" + id);
@@ -58,6 +59,15 @@ const SingleNews = () => {
     )
   }
 
+  useEffect(() => {
+    if (dataComments && dataComments.message) {
+      console.log('oprettet')
+      setMessage('Kommentar er oprettet')
+    } else {
+      setMessage('Noget gik galt')
+    }
+  }, [dataComments])
+
   return (
     <>
       {loading && <Loader />}
@@ -70,7 +80,7 @@ const SingleNews = () => {
           <article className='singleNewsArticle'>
             <div className='singleNewsArticleContent'>
               <div className="SingleNewshead">
-                <img src={`http://localhost:5333/images/news/${data?.image}`} alt="" />
+                <img src={`http://localhost:5333/images/news/${data?.image}`} alt={data?.title} />
                 <div className="newsDate">
                   <p>{formattedDate}</p>
                 </div>
@@ -98,6 +108,9 @@ const SingleNews = () => {
               ))}
             </div>
             <h2>Skriv en kommentar</h2>
+            {dataComments && dataComments.message && (
+              <p className='textOrange'>{messege}</p>
+            )}
             <form className='singleNewsCommentsForm' onSubmit={e => handleSubmit(e)}>
               <div>
                 <input type="text" name="name" placeholder='Navn' required />

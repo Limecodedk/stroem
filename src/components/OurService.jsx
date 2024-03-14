@@ -32,7 +32,7 @@ const OurService = () => {
           ))}
         </div>
         <div className='serviceWomen'>
-          <img src="/public/asssets/1.png" alt="" />
+          <img src="/public/asssets/1.png" alt="handy kvinde med vearktoej i haarden" />
         </div>
 
       </section>

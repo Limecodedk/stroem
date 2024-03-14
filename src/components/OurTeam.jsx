@@ -23,7 +23,7 @@ const OurTeam = () => {
       <div className='teamPeople'>
         {data?.map((item, index) => (
           <div className='teamPerson' key={index} onMouseEnter={() => setHoveredIndex(index)} onMouseLeave={() => setHoveredIndex(null)}>
-            <img src={`http://localhost:5333/images/team/${item.image}`} alt='' />
+            <img src={`http://localhost:5333/images/team/${item.image}`} alt='Billeder af vores medarbejder' />
             <div className={`teamContent ${hoveredIndex === index ? 'active' : ''}`}>
               <h2>{item.name}</h2>
               <p>{item.title}</p>

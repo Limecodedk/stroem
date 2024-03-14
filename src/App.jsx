@@ -19,6 +19,7 @@ import AdminBooking from './pages/admin/AdminBooking';
 import SingleNews from './pages/News/SingleNews'
 import AdminNewsCreate from './pages/admin/AdminNewsCreate'
 import AdminBookingEdit from './pages/admin/AdminBookingEdit'
+import SearchResultat from './pages/SearchResultat'
 
 function App() {
   const router = createBrowserRouter(
@@ -34,6 +35,7 @@ function App() {
           <Route path='/nyhed/:id' element={<SingleNews />} />
           <Route path='/kontakt' element={<ContactUs />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/resultat/:id' element={<SearchResultat />} />
         </Route>
 
         {/* Admin */}

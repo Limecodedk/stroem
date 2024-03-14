@@ -24,7 +24,7 @@ const NewsArchive = ({ data }) => {
       {data?.slice(4, 8).map((item, index) => (
         <div key={index}>
           <a href={`/nyhed/${item._id}`}>
-            <img src={`http://localhost:5333/images/news/${item.image}`} alt="" />
+            <img src={`http://localhost:5333/images/news/${item.image}`} alt={item.title} />
             <div>{parse(item.content.substring(0, 50))}...</div>
             <p><FaCalendarAlt className='newsArchiveIcon' /> {formattedDates[index]}</p>
           </a>
