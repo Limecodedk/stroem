@@ -4,6 +4,8 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import useRequestData from '../hooks/useRequestData';
 import { Link } from 'react-router-dom';
+import Error from './Error';
+import Loader from './Loader';
 
 const HomeSlider = () => {
   const { data, isLoading, error, makeRequest } = useRequestData();
@@ -29,6 +31,7 @@ const HomeSlider = () => {
   return (
     <>
       <section className="sliderContainer">
+        {error && <Error />}
         <Slider {...settings}>
           {filteredData?.map((item, index) => (
             <div key={index} className="slider">

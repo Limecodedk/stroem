@@ -3,11 +3,14 @@ import useRequestData from '../../hooks/useRequestData';
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { Link } from 'react-router-dom';
+import Error from '../../components/Error';
 
 const AdminBooking = () => {
-  const { data, isLoading, error, makeRequest } = useRequestData();
-  const { data: dataDelete, isLoading: isLoadingDelete, error: errorDelete, makeRequest: makeRequestDelete } = useRequestData()
+  const { data, error, makeRequest } = useRequestData();
+  const { data: dataDelete, error: errorDelete, makeRequest: makeRequestDelete } = useRequestData()
   const [message, setMessage] = useState('');
+
+  const combinedError = error || errorDelete;
 
   useEffect(() => {
     makeRequest('http://localhost:5333/booking/admin');
@@ -34,6 +37,7 @@ const AdminBooking = () => {
       <div>
         <h1>Nyheder</h1>
       </div>
+      {combinedError && <Error />}
       {dataDelete && <p className='textOrange message'>{message}</p>}
       <table>
         <thead>

@@ -9,9 +9,15 @@ import Testimonial from '../components/Testimonial'
 import OurTeam from '../components/OurTeam'
 import LatestNews from '../components/LatestNews'
 
+import Loader from '../components/Loader'
+import { useLoader } from '../context/LoaderContext'
+
 const Home = () => {
+  const { loading } = useLoader();
+
   return (
     <>
+      {loading && <Loader />}
       <HomeSlider />
       <AboutStroem />
       <Contact />

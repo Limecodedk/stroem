@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react'
 import useRequestData from '../hooks/useRequestData'
 import '../styles/flaticon.css'
+import Error from './Error'
+import Loader from './Loader'
+
 
 const OurService = () => {
   const { data, isLoading, error, makeRequest } = useRequestData();
@@ -11,6 +14,7 @@ const OurService = () => {
 
   return (
     <>
+      {error && <Error />}
       <section className='OurServiceContainer'>
         <div className='serviceGrid'>
           <div className='serviceAllCol'>

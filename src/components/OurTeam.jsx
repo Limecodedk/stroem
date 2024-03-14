@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import useRequestData from '../hooks/useRequestData';
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaPinterestP } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import Error from './Error';
 
 
 const OurTeam = () => {
@@ -14,6 +15,7 @@ const OurTeam = () => {
 
   return (
     <section className='teamContainer'>
+      {error && <Error />}
       <div className='teamHeading'>
         <h2>Vores <span className='textOrange'>team</span></h2>
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia voluptatibus dignissimos aliquam.</p>

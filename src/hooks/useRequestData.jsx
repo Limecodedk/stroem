@@ -1,19 +1,18 @@
 import React from 'react'
 import { useState } from 'react'
 import axios from 'axios'
-
-//const apiUrl = axios.create({baseUrl: "http://localhost:5029/"})
+import { useLoader } from '../context/LoaderContext'
 
 
 const useRequestData = () => {
 
   const [data, setData] = useState()
-  const [isLoading, setIsLoading] = useState()
   const [error, setError] = useState()
+  const { showLoader, hideLoader } = useLoader();
 
   const makeRequest = async (url, headers = null, params = null, method = "GET", bodydata = null) => {
 
-    setIsLoading(true); // Der loades = afventer svar fra api
+    showLoader();
 
     try {
       let response
@@ -44,12 +43,12 @@ const useRequestData = () => {
       setError("Der er opstået en fejl:" + error.message)
 
     } finally {
-      setIsLoading(false)
+      hideLoader();
     }
   }
 
   return (
-    { data, isLoading, error, makeRequest }
+    { data, error, makeRequest }
   )
 }
 

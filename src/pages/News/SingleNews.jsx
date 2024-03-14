@@ -4,12 +4,16 @@ import PageHeader from '../../components/PageHeader';
 import useRequestData from '../../hooks/useRequestData';
 import { FaRegComments, FaCalendarAlt } from 'react-icons/fa';
 import NewsArchive from '../../components/NewsArchive';
+import Error from '../../components/Error';
+import Loader from '../../components/Loader'
+import { useLoader } from '../../context/LoaderContext'
 
 
 const SingleNews = () => {
-  const { data, isLoading, error, makeRequest } = useRequestData();
-  const { data: dataAll, isLoading: isLoadingAll, error: errorAll, makeRequest: makeRequestAll } = useRequestData();
-  const { data: dataComments, isLoading: isLoadingComments, error: errorComments, makeRequest: makeRequestComments } = useRequestData();
+  const { loading } = useLoader();
+  const { data, error, makeRequest } = useRequestData();
+  const { data: dataAll, error: errorAll, makeRequest: makeRequestAll } = useRequestData();
+  const { data: dataComments, error: errorComments, makeRequest: makeRequestComments } = useRequestData();
   const { id } = useParams();
   const pathnames = useLocation().pathname.split('/').filter((x) => x);
   const [formattedDate, setFormattedDate] = useState('');
@@ -55,57 +59,61 @@ const SingleNews = () => {
   }
 
   return (
-    <section className='singleNewsContainer'>
-      <div>
-        <PageHeader title={data?.title} pathnames={pathnames} />
-      </div>
-      <div className="singleNewsArticleContainer">
-        <article className='singleNewsArticle'>
-          <div className='singleNewsArticleContent'>
-            <div className="SingleNewshead">
-              <img src={`http://localhost:5333/images/news/${data?.image}`} alt="" />
-              <div className="newsDate">
-                <p>{formattedDate}</p>
+    <>
+      {loading && <Loader />}
+      <section className='singleNewsContainer'>
+        <div>
+          <PageHeader title={data?.title} pathnames={pathnames} />
+        </div>
+        {error && <Error />}
+        <div className="singleNewsArticleContainer">
+          <article className='singleNewsArticle'>
+            <div className='singleNewsArticleContent'>
+              <div className="SingleNewshead">
+                <img src={`http://localhost:5333/images/news/${data?.image}`} alt="" />
+                <div className="newsDate">
+                  <p>{formattedDate}</p>
+                </div>
+              </div>
+              <div className="singleNewsBody">
+                <p>
+                  <span className='comments'>
+                    <FaRegComments />
+                  </span>
+                  {data?.comments.length} Kommentar
+                </p>
+                <h2>{data?.title}</h2>
+                <div className='line'></div>
+                <div dangerouslySetInnerHTML={{ __html: data?.content }}></div>
               </div>
             </div>
-            <div className="singleNewsBody">
-              <p>
-                <span className='comments'>
-                  <FaRegComments />
-                </span>
-                {data?.comments.length} Kommentar
-              </p>
-              <h2>{data?.title}</h2>
-              <div className='line'></div>
-              <div dangerouslySetInnerHTML={{ __html: data?.content }}></div>
+            <div className="commentsField">
+              <h2>Kommentar({data?.comments.length})</h2>
+              {formattedComments.map((item, index) => (
+                <div className="comments" key={index}>
+                  <h3>{item.name}</h3>
+                  <p><FaCalendarAlt className='newsArchiveIcon' /> {item.received}</p>
+                  <p>{item.comment}</p>
+                </div>
+              ))}
             </div>
-          </div>
-          <div className="commentsField">
-            <h2>Kommentar({data?.comments.length})</h2>
-            {formattedComments.map((item, index) => (
-              <div className="comments" key={index}>
-                <h3>{item.name}</h3>
-                <p><FaCalendarAlt className='newsArchiveIcon' /> {item.received}</p>
-                <p>{item.comment}</p>
+            <h2>Skriv en kommentar</h2>
+            <form className='singleNewsCommentsForm' onSubmit={e => handleSubmit(e)}>
+              <div>
+                <input type="text" name="name" placeholder='Navn' required />
+                <input type="email" name="email" placeholder='Email' required />
               </div>
-            ))}
-          </div>
-          <h2>Skriv en kommentar</h2>
-          <form className='singleNewsCommentsForm' onSubmit={e => handleSubmit(e)}>
-            <div>
-              <input type="text" name="name" placeholder='Navn' required />
-              <input type="email" name="email" placeholder='Email' required />
-            </div>
-            <textarea name="comment" id="" cols="30" rows="10" required></textarea>
-            <button type="submit" className='btn effect2'>Send Besked</button>
-          </form>
-        </article>
-        <aside className="newsArchive">
-          <h3>Arkiv:</h3>
-          <NewsArchive data={dataAll} />
-        </aside>
-      </div>
-    </section>
+              <textarea name="comment" id="" cols="30" rows="10" required></textarea>
+              <button type="submit" className='btn effect2'>Send Besked</button>
+            </form>
+          </article>
+          <aside className="newsArchive">
+            <h3>Arkiv:</h3>
+            <NewsArchive data={dataAll} />
+          </aside>
+        </div>
+      </section>
+    </>
   );
 };
 

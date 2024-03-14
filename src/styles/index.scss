@@ -44,6 +44,16 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.error {
+  h2 {
+    color: $orange;
+  }
+
+  p {
+    color: $white;
+  }
+}
+
 /*Global Link */
 a {
   font-weight: 500;
@@ -99,7 +109,6 @@ a {
 }
 
 /* header */
-
 .headerContainer {
   position: relative;
   background-color: $Onyx;
@@ -213,7 +222,6 @@ a {
 }
 
 /* HOMEPAGE */
-
 /* Slider */
 .sliderContainer {
   z-index: 97;
@@ -1228,6 +1236,39 @@ a {
     }
   }
 }
+
+/* Loader */
+
+.loader {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background-color: #000000c7;
+  height: 100vh;
+  width: 100%;
+  z-index: 98;
+
+  .loaderContainer {
+    position: relative;
+    top: 10%;
+    left: 2%;
+    background-color: $Onyx;
+    width: 400px;
+    margin: 4em auto;
+    padding: 2em;
+    color: $white;
+    text-align: center;
+    border-radius: 5px;
+    z-index: 99;
+
+    .LoaderImage {
+      margin: 1em 0;
+      border-radius: 5px;
+    }
+  }
+
+}
+
 
 /* Responsiv */
 //1024px

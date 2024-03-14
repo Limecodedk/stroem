@@ -2,12 +2,15 @@ import React, { useEffect, useRef, useState } from 'react';
 import useRequestData from '../../hooks/useRequestData'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
+import Error from '../../components/Error';
 
 const AdminAbout = () => {
-  const { data, isLoading, error, makeRequest } = useRequestData()
-  const { data: dataEdit, isLoading: isLoadingEdit, error: errorEdit, makeRequest: makeRequestEdit } = useRequestData()
+  const { data, error, makeRequest } = useRequestData()
+  const { data: dataEdit, error: errorEdit, makeRequest: makeRequestEdit } = useRequestData()
   const [quillContent, setQuillContent] = useState("")
   const [message, setMessage] = useState('');
+
+  const combinedError = error || errorEdit;
 
   useEffect(() => {
     makeRequest("http://localhost:5333/about/",)
@@ -38,6 +41,7 @@ const AdminAbout = () => {
 
   return (
     <section className='NewsEditContainer'>
+      {combinedError && <Error />}
       <div className="NewsEditHeader">
         <h1>Redigere nyhed {data?.title}</h1>
       </div>

@@ -3,9 +3,10 @@ import { useNavigate } from 'react-router-dom'
 import useRequestData from '../../hooks/useRequestData'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
+import Error from '../../components/Error';
 
 const AdminNewsCreate = () => {
-  const { data, isLoading, error, makeRequest } = useRequestData()
+  const { data, error, makeRequest } = useRequestData()
   const [quillContent, setQuillContent] = useState("")
   const [message, setMessage] = useState('');
 
@@ -41,6 +42,7 @@ const AdminNewsCreate = () => {
       <div className="NewsEditHeader">
         <h1>Opret nyhed</h1>
       </div>
+      {error && <Error />}
       {data && data.oprettet && (
         <p className='textOrange'>{message}</p>
       )}

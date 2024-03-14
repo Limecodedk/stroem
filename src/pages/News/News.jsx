@@ -5,9 +5,13 @@ import useRequestData from '../../hooks/useRequestData';
 import { FaRegComments, FaCalendarAlt } from 'react-icons/fa';
 import parse from 'html-react-parser';
 import NewsArchive from '../../components/NewsArchive';
+import Error from '../../components/Error'
+import Loader from '../../components/Loader'
+import { useLoader } from '../../context/LoaderContext'
 
 const News = () => {
-  const { data, isLoading, error, makeRequest } = useRequestData();
+  const { data, error, makeRequest } = useRequestData();
+  const { loading } = useLoader();
   const pathnames = useLocation().pathname.split('/').filter((x) => x);
   const [latestNews, setLatestNews] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -53,57 +57,61 @@ const News = () => {
   };
 
   return (
-    <section className="newssection">
-      <div>
-        <PageHeader title={'Nyheder'} pathnames={pathnames} />
-      </div>
-      <div className="newsPageContainer">
+    <>
+      {loading && <Loader />}
+      <section className="newssection">
         <div>
-          <div className="newsCardContainer">
-            {latestNews?.map((item, index) => (
-              <article key={index} className="newsCard">
-                <Link to={`/nyhed/${item._id}`}>
-                  <div className="newsCardHead">
-                    <img src={`http://localhost:5333/images/news/${item.image}`} alt="" />
-                    <div className="newsCardDate">
-                      <p>{item.received}</p>
-                    </div>
-                  </div>
-                  <div className="newsCardContent">
-                    <h2>{item.title}</h2>
-                    <div>{parse(item.content.substring(0, 100))}...</div>
-                    <div className="newsCardLine"></div>
-                    <p>
-                      <span className='comments'>
-                        <FaRegComments />
-                      </span>
-                      {item.commentsCount} Kommentar
-                    </p>
-                  </div>
-                </Link>
-              </article>
-            ))}
-          </div>
-          <div className="pagination">
-            <button onClick={handlePrevPage} disabled={currentPage === 1} className='paginationBtnPrev'>
-              Tilbage
-            </button>
-            {pageNumbers.map((number, index) => (
-              <button key={index} onClick={(e) => handleClick(e, number)}>
-                {number}
-              </button>
-            ))}
-            <button onClick={handleNextPage} disabled={currentPage === Math.ceil(data?.length / itemsPerPage)} className='paginationBtnNext'>
-              Frem
-            </button>
-          </div>
+          <PageHeader title={'Nyheder'} pathnames={pathnames} />
         </div>
-        <aside className="newsArchive">
-          <h3>Arkiv:</h3>
-          <NewsArchive data={data} />
-        </aside>
-      </div>
-    </section >
+        {error && <Error />}
+        <div className="newsPageContainer">
+          <div>
+            <div className="newsCardContainer">
+              {latestNews?.map((item, index) => (
+                <article key={index} className="newsCard">
+                  <Link to={`/nyhed/${item._id}`}>
+                    <div className="newsCardHead">
+                      <img src={`http://localhost:5333/images/news/${item.image}`} alt="" />
+                      <div className="newsCardDate">
+                        <p>{item.received}</p>
+                      </div>
+                    </div>
+                    <div className="newsCardContent">
+                      <h2>{item.title}</h2>
+                      <div>{parse(item.content.substring(0, 100))}...</div>
+                      <div className="newsCardLine"></div>
+                      <p>
+                        <span className='comments'>
+                          <FaRegComments />
+                        </span>
+                        {item.commentsCount} Kommentar
+                      </p>
+                    </div>
+                  </Link>
+                </article>
+              ))}
+            </div>
+            <div className="pagination">
+              <button onClick={handlePrevPage} disabled={currentPage === 1} className='paginationBtnPrev'>
+                Tilbage
+              </button>
+              {pageNumbers.map((number, index) => (
+                <button key={index} onClick={(e) => handleClick(e, number)}>
+                  {number}
+                </button>
+              ))}
+              <button onClick={handleNextPage} disabled={currentPage === Math.ceil(data?.length / itemsPerPage)} className='paginationBtnNext'>
+                Frem
+              </button>
+            </div>
+          </div>
+          <aside className="newsArchive">
+            <h3>Arkiv:</h3>
+            <NewsArchive data={data} />
+          </aside>
+        </div>
+      </section >
+    </>
   );
 };
 

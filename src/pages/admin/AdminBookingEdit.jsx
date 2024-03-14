@@ -2,15 +2,18 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import useRequestData from '../../hooks/useRequestData'
 import { MdDelete } from "react-icons/md";
+import Error from '../../components/Error';
 
 const AdminBookingEdit = () => {
   const { id } = useParams()
-  const { data, isLoading, error, makeRequest } = useRequestData();
-  const { data: dataUpdate, isLoading: isLoadingUpdate, error: errorUpdate, makeRequest: makeRequestUpdate } = useRequestData();
-  const { data: dataEdit, isLoading: isLoadingEdit, error: errorEdit, makeRequest: makeRequestEdit } = useRequestData();
-  const { data: dataAccept, isLoading: isLoadingAccept, error: errorAccept, makeRequest: makeRequestAccept } = useRequestData();
-  const { data: dataDelete, isLoading: isLoadingDelete, error: errorDelete, makeRequest: makeRequestDelete } = useRequestData()
+  const { data, error, makeRequest } = useRequestData();
+  const { data: dataUpdate, error: errorUpdate, makeRequest: makeRequestUpdate } = useRequestData();
+  const { data: dataEdit, error: errorEdit, makeRequest: makeRequestEdit } = useRequestData();
+  const { data: dataAccept, error: errorAccept, makeRequest: makeRequestAccept } = useRequestData();
+  const { data: dataDelete, error: errorDelete, makeRequest: makeRequestDelete } = useRequestData()
   const [message, setMessage] = useState('');
+
+  const combinedError = error || errorUpdate || errorEdit || errorAccept || errorDelete;
 
   useEffect(() => {
     makeRequest("http://localhost:5333/booking/admin/" + id,)
@@ -75,6 +78,7 @@ const AdminBookingEdit = () => {
       <div>
         <h1>Booking af {data?.name}:</h1>
       </div>
+      {combinedError && <Error />}
       <div className='bookingTableContainer'>
         <table>
           <thead>

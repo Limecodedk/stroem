@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useRequestData from '../hooks/useRequestData';
+import Error from './Error';
 
 const Testimonial = () => {
   const { data, isLoading, error, makeRequest } = useRequestData();
@@ -30,6 +31,7 @@ const Testimonial = () => {
     setClicked(true);
   };
 
+
   const handleMouseMove = (e) => {
     if (clicked) {
       const diff = startX - e.clientX;
@@ -57,7 +59,8 @@ const Testimonial = () => {
   const testimonialsToShow = windowWidth > 425 ? 3 : 1;
 
   return (
-    <section className='testimonialSection' onMouseDown={handleMouseDown} onMouseMove={handleMouseMove}>
+    <section className='testimonialSection' onMouseDown={handleMouseDown} onMouseMove={handleMouseMove} onTouchMove={handleMouseMove}>
+      {error && <Error />}
       <div className='testimonialbg'>
         <div className="overlay"></div>
         <div className='testimonialbgImage'>
