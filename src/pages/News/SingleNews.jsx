@@ -9,6 +9,7 @@ import NewsArchive from '../../components/NewsArchive';
 const SingleNews = () => {
   const { data, isLoading, error, makeRequest } = useRequestData();
   const { data: dataAll, isLoading: isLoadingAll, error: errorAll, makeRequest: makeRequestAll } = useRequestData();
+  const { data: dataComments, isLoading: isLoadingComments, error: errorComments, makeRequest: makeRequestComments } = useRequestData();
   const { id } = useParams();
   const pathnames = useLocation().pathname.split('/').filter((x) => x);
   const [formattedDate, setFormattedDate] = useState('');
@@ -41,6 +42,17 @@ const SingleNews = () => {
       setFormattedComments(formattedComments);
     }
   }, [data]);
+
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    let fd = new FormData(event.target)
+    await makeRequestComments("http://localhost:5333/news/comment/" + id,
+      {
+        "Content-Type": "multipart/form-data"
+      }, null, "POST", fd
+    )
+  }
 
   return (
     <section className='singleNewsContainer'>
@@ -79,12 +91,12 @@ const SingleNews = () => {
             ))}
           </div>
           <h2>Skriv en kommentar</h2>
-          <form className='singleNewsCommentsForm'>
+          <form className='singleNewsCommentsForm' onSubmit={e => handleSubmit(e)}>
             <div>
               <input type="text" name="name" placeholder='Navn' required />
               <input type="email" name="email" placeholder='Email' required />
             </div>
-            <textarea name="comments" id="" cols="30" rows="10" required></textarea>
+            <textarea name="comment" id="" cols="30" rows="10" required></textarea>
             <button type="submit" className='btn effect2'>Send Besked</button>
           </form>
         </article>
