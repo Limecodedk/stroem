@@ -18,8 +18,10 @@
 - Single News Page
 - About Page
 - Contact Us page 
+- Login
+- Responsiv
+- Admin stylesheet see Admin.scss
 */
-
 
 // Import Variables
 @import 'variables';
@@ -886,7 +888,6 @@ a {
 }
 
 /* Single News Page */
-
 .singleNewsContainer {
   .singleNewsArticleContainer {
     display: flex;
@@ -999,6 +1000,7 @@ a {
   }
 }
 
+/* Service page */
 .serviceSection {
   .selectedServiceContainer {
     display: flex;
@@ -1231,7 +1233,6 @@ a {
 //1024px
 @media only screen and (max-width: 1024px) {
 
-
   /* Our Service */
   .OurServiceContainer {
     width: 900px; //
@@ -1270,6 +1271,70 @@ a {
         width: 250px;
         height: 200px;
       }
+    }
+  }
+
+  /* Page Subheader */
+  .headingContainer {
+    background-color: $cultured;
+    padding: 3em 0;
+
+    .heading {
+      display: flex;
+      justify-content: space-between;
+      width: 900px;
+      margin: 0 auto;
+    }
+  }
+
+  /* News Page */
+  .newssection {
+    .newsPageContainer {
+      margin: 2em auto;
+      width: 700px;
+
+    }
+  }
+
+  /* Global Archive */
+  .newsArchiveCard {
+    width: 200px;
+
+    .line,
+    .archiveCardLine,
+    .newsCardLine {
+      width: 100%;
+    }
+  }
+
+  /* Global Newscard */
+  .newsCardContainer {
+    gap: 15px;
+
+    .newsCard {
+      img {
+        width: 250px;
+      }
+
+      .newsCardDate {
+        width: 55px;
+        padding: .5em;
+
+        p {
+          font-size: 1rem;
+        }
+      }
+
+      .newsCardContent {
+        width: 280px;
+      }
+    }
+  }
+
+  /* Single News Page */
+  .singleNewsContainer {
+    .singleNewsArticleContainer {
+      width: 900px;
     }
   }
 }
@@ -1373,7 +1438,6 @@ a {
       z-index: 99;
     }
   }
-
 
   /* About Section */
   .AboutSection {
@@ -1515,6 +1579,165 @@ a {
       height: 30px;
     }
   }
+
+  /* Page Subheader */
+  .headingContainer {
+    background-color: $cultured;
+    padding: 3em 0;
+
+    .heading {
+      display: flex;
+      justify-content: space-between;
+      width: 700px;
+      margin: 0 auto;
+    }
+  }
+
+  /* FAQ Page */
+  .faqAccordion {
+    width: 700px;
+  }
+
+  /* News Page */
+  .newssection {
+    .newsPageContainer {
+      width: 600px;
+
+      .newsCardContainer {
+        .newsCardContent {
+          height: fit-content; ///
+        }
+      }
+
+      .newsArchive {
+        width: 25%;
+      }
+
+      .pagination {
+        margin-top: 2em;
+      }
+    }
+  }
+
+  /* Global Archive */
+  .newsArchiveCard {
+    width: 150px;
+
+
+    .line,
+    .archiveCardLine,
+    .newsCardLine {
+      width: 100%;
+    }
+
+  }
+
+  /* Global Newscard */
+  .newsCardContainer {
+    gap: 15px;
+
+    .newsCard {
+      img {
+        width: 200px;
+      }
+
+      .newsCardDate {
+        width: 55px;
+        padding: .5em;
+
+        p {
+          font-size: 1rem;
+        }
+      }
+
+      .newsCardContent {
+        width: 200px;
+        height: 140px;
+      }
+    }
+  }
+
+  /* Single News Page */
+  .singleNewsContainer {
+    .singleNewsArticleContainer {
+      width: 600px;
+      gap: .8em;
+
+      .singleNewsArticleContent {
+        .SingleNewshead {
+          position: relative;
+
+          img {
+            width: 450px;
+          }
+
+          .newsDate {
+            z-index: 98;
+
+            width: 65px;
+            padding: .5em;
+
+            p {
+              font-size: 1rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* Service page */
+  .serviceSection {
+    .selectedServiceContainer {
+      flex-direction: column;
+      width: 600px;
+    }
+
+    .serviceNav {
+      .serviceBox {
+        margin: .5em auto;
+      }
+    }
+  }
+
+  /* About Page */
+  .aboutSection {
+    .aboutHeader {
+      width: 600px;
+    }
+
+    .aboutContainer {
+      width: 600px;
+      gap: 1em;
+    }
+  }
+
+  /* Contact Us page */
+  .contactSection {
+    margin-bottom: 2em;
+
+    .contactInfoContainer {
+      width: 600px;
+
+      .contactIcon {
+        display: flex;
+        flex-direction: row;
+        margin-right: 1em;
+
+        svg {
+          color: $orange;
+          font-size: 1.8rem;
+        }
+      }
+
+    }
+
+    .contactFormContainer {
+      max-width: 600px;
+      flex-direction: column;
+    }
+  }
+
 }
 
 //425px
@@ -1810,7 +2033,197 @@ a {
     }
   }
 
+  /* Page Subheader */
+  .headingContainer {
+    background-color: $cultured;
+    padding: 3em 0;
 
+    .heading {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 300px;
+      margin: 0 auto;
+    }
+  }
+
+  /* FAQ Page */
+  .faqAccordion {
+    width: 300px;
+  }
+
+  /* News Page */
+  .newssection {
+    .newsPageContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 2em auto;
+      width: 370px;
+
+
+      .newsCardContainer {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+
+        .newsCardContent {
+          height: fit-content;
+          width: fit-content;
+          padding: 0 30px;
+        }
+      }
+
+      .newsCardContainer {
+        width: 300px;
+      }
+
+      .pagination {
+        margin: 2em 0;
+      }
+    }
+  }
+
+  /* Global Archive */
+  .newsArchiveCard {
+    width: 300px;
+  }
+
+  /* Global Newscard */
+  .newsCardContainer {
+    .newsCard {
+      img {
+        width: 300px;
+      }
+
+      .newsCardDate {
+        z-index: 97;
+        padding: .5em;
+
+        p {
+          font-size: 1rem;
+        }
+      }
+
+      .newsCardHead {
+        position: relative;
+      }
+
+      .newsCardContent {
+        width: 350px;
+      }
+    }
+  }
+
+  /* Single News Page */
+  .singleNewsContainer {
+    .singleNewsArticleContainer {
+      display: flex;
+      flex-direction: column;
+      width: 350px;
+      gap: 5em;
+
+      .singleNewsArticleContent {
+        .SingleNewshead {
+          img {
+            object-fit: cover;
+            width: 350px;
+          }
+
+          .newsDate {
+            z-index: 97;
+            width: 55px;
+            padding: .5em;
+
+            p {
+              font-size: 1rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* Service page */
+  .serviceSection {
+    .selectedServiceContainer {
+      display: flex;
+      flex-direction: column;
+      width: 350px;
+    }
+
+    .serviceNav {
+      .serviceBox {
+        width: 350px;
+      }
+    }
+
+    .serviceContent {
+      img {
+        width: 350px;
+      }
+    }
+  }
+
+  /* About Page */
+  .aboutSection {
+    .aboutHeader {
+      width: 350px;
+    }
+
+    .aboutContainer {
+      width: 350px;
+      flex-direction: column-reverse;
+      gap: 2em;
+
+      .aboutImage {
+        width: 350px;
+
+        img {
+          width: 350px;
+        }
+      }
+    }
+  }
+
+  /* Contact Us page */
+  .contactSection {
+
+    .contactInfoContainer {
+      flex-direction: column;
+      width: 350px;
+
+      .contactInfo {
+        flex-direction: column;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .contactIcon {
+        display: flex;
+        margin: 0 auto;
+      }
+
+      .line {
+        height: 1px;
+        width: 90%;
+      }
+    }
+
+    .contactFormContainer {
+      max-width: 350px;
+
+      .contact {
+        p {
+          width: 300px;
+        }
+      }
+
+      .contactMap {
+        margin-top: 2em;
+      }
+    }
+  }
 }
 
 //374px
@@ -1818,12 +2231,9 @@ a {
 
   /* header */
   .headerContainer {
-
     .navBar {
       width: 350px;
-
     }
-
   }
 
   /* About Section */
@@ -1840,7 +2250,6 @@ a {
   .bookNowSection {
     .bookNowContainer {
       width: 370px;
-
     }
   }
 
