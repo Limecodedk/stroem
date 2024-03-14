@@ -61,16 +61,15 @@ const SingleNews = () => {
                 <span className='comments'>
                   <FaRegComments />
                 </span>
-                2 Kommentar
+                {data?.comments.length} Kommentar
               </p>
               <h2>{data?.title}</h2>
               <div className='line'></div>
               <div dangerouslySetInnerHTML={{ __html: data?.content }}></div>
             </div>
           </div>
-          {/* Kommentar */}
           <div className="commentsField">
-            <h2>Kommentar(2)</h2>
+            <h2>Kommentar({data?.comments.length})</h2>
             {formattedComments.map((item, index) => (
               <div className="comments" key={index}>
                 <h3>{item.name}</h3>

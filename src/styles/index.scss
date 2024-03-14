@@ -131,10 +131,10 @@ a {
         color: $orange;
       }
     }
+  }
 
-    .active {
-      color: $orange;
-    }
+  .active a {
+    color: $orange;
   }
 
   .menuIcon {
