@@ -26,7 +26,6 @@
 // Import Variables
 @import 'variables';
 
-
 * {
   margin: 0;
   padding: 0;
@@ -37,11 +36,6 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 .error {
@@ -109,6 +103,7 @@ a {
 }
 
 /* header */
+
 .headerContainer {
   position: relative;
   background-color: $Onyx;
@@ -153,8 +148,8 @@ a {
 
   .search {
     position: absolute;
-    top: 98%;
-    right: 13%;
+    top: 100%;
+    right: 12%;
     transform: translateY(-50%);
     height: 40px;
     border-radius: 5px;
@@ -166,15 +161,12 @@ a {
   .searchIcon {
     position: absolute;
     top: 100%;
-    right: 14%;
+    right: 13%;
     transform: translateY(-50%);
     color: $eerie-black;
     z-index: 99;
     cursor: pointer;
   }
-
-
-
 
   .headerTopbar {
     position: relative;
@@ -1319,8 +1311,10 @@ a {
 }
 
 /* Responsiv */
+
 //1024px
 @media only screen and (max-width: 1024px) {
+
 
   /* Our Service */
   .OurServiceContainer {

@@ -84,7 +84,9 @@ const Header = () => {
               </li>
             ))}
           </ul>
-          <Headersearch />
+          <div>
+            <Headersearch />
+          </div>
         </nav>
       </header>
     </>
