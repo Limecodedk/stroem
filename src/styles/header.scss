@@ -1,1 +1,253 @@
 @import 'variables';
+
+* {
+
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* header */
+
+.headerContainer {
+  position: relative;
+  background-color: $Onyx;
+  padding: .6em 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
+
+  .navbarContainer {
+    position: absolute;
+    top: 70%;
+    background-color: $white;
+    display: flex;
+    flex-direction: row;
+    width: 900px;
+    margin: 0 auto;
+    justify-content: space-between;
+    padding: .5em 15px;
+    border-radius: 5px;
+    box-shadow: 2px 1px 15px $white;
+
+    .navBar {
+      ul {
+        display: flex;
+        flex-direction: row;
+        gap: 2em;
+
+        li {
+          list-style-type: none;
+          margin: .5em 0;
+        }
+      }
+    }
+  }
+
+  .activeNav a {
+    color: $orange;
+  }
+
+  .menuIcon {
+    display: none;
+    cursor: pointer;
+  }
+
+  .searchContainer {
+    display: flex;
+    position: relative;
+    align-self: center;
+  }
+
+  .search {
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid $sonic-silver;
+    padding-right: 35px;
+    z-index: 98;
+    outline: none;
+  }
+
+  .searchIcon {
+    color: $eerie-black;
+    position: absolute;
+    top: 40%;
+    right: 10px;
+    transform: translateY(-50%);
+    z-index: 99;
+    cursor: pointer;
+  }
+
+  .headerTopbar {
+    position: relative;
+    width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    color: $white;
+
+    .logo {
+      margin-bottom: 15px;
+
+      img {
+        width: 150px;
+        height: 50px;
+      }
+    }
+
+    .contact {
+      display: flex;
+      gap: 2em;
+      padding-top: 15px;
+      font-size: .8rem;
+
+      a {
+        color: $white;
+      }
+    }
+
+    .contactIcon {
+      color: $orange;
+      margin-right: 10px;
+    }
+  }
+}
+
+
+//425px
+@media only screen and (max-width: 425px) {
+  .headerContainer {
+    position: relative;
+    background-color: $Onyx;
+    padding: 2em 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
+
+    .navbarContainer {
+      position: absolute;
+      top: 90%;
+      background-color: $white;
+      display: flex;
+      flex-direction: column-reverse;
+      width: 400px;
+      margin: 0 auto;
+      justify-content: space-between;
+      padding: .5em 15px;
+      border-radius: 5px;
+      box-shadow: 2px 1px 15px $white;
+      transition: top 0.3s ease-out;
+
+      .navBar {
+        ul {
+          display: none;
+          flex-direction: row;
+          gap: .2em;
+          margin-top: 10px;
+
+          li {
+            list-style-type: none;
+            margin: 0;
+            background-color: $Onyx;
+            padding: .8em 0;
+
+            a {
+              color: $white;
+            }
+          }
+        }
+      }
+
+      .menuContainer {
+        display: flex;
+        justify-content: space-between;
+      }
+
+
+    }
+
+    .activeNavBar ul {
+      display: flex !important;
+      flex-direction: column !important;
+    }
+
+    .activeNav a {
+      color: $orange;
+    }
+
+    .menuIcon {
+      display: block;
+      cursor: pointer;
+      font-size: 2rem;
+      padding: .1em;
+      background-color: $Onyx;
+      color: $white;
+    }
+
+    .searchContainer {
+      display: flex;
+      position: relative;
+      align-self: center;
+    }
+
+    .search {
+      height: 30px;
+      border-radius: 5px;
+      border: 1px solid $sonic-silver;
+      padding-right: 35px;
+      z-index: 98;
+      outline: none;
+    }
+
+    .searchIcon {
+      color: $eerie-black;
+      position: absolute;
+      top: 40%;
+      right: 10px;
+      transform: translateY(-50%);
+      z-index: 99;
+      cursor: pointer;
+    }
+
+    .headerTopbar {
+      position: static;
+      width: 350px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: $white;
+
+      .logo {
+        margin: 0 auto;
+
+        img {
+          width: 150px;
+          height: 50px;
+        }
+      }
+
+      .contact {
+        display: flex;
+        text-align: center;
+        flex-direction: column;
+        gap: 0;
+        padding-top: 5px;
+        font-size: .8rem;
+
+        a {
+          color: $white;
+        }
+      }
+
+      .contactIcon {
+        color: $orange;
+        margin-right: 10px;
+      }
+    }
+  }
+
+
+}

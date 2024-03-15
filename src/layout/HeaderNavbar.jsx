@@ -5,6 +5,7 @@ import { MdPlace, MdOutlineAccessTime, MdLocalPhone } from 'react-icons/md';
 import { IoIosMenu } from 'react-icons/io';
 import Headersearch from '../components/Search/HeaderSearch'
 
+
 const HeaderNavbar = () => {
   const { data, isLoading, error, makeRequest } = useRequestData();
   const [navBar, setNavBar] = useState(false);
@@ -47,11 +48,9 @@ const HeaderNavbar = () => {
 
   return (
     <>
+
       <div className='navbarContainer'>
-        <nav className={navBar ? 'navBar activeNav' : 'navBar'}>
-          <div className="menuIcon" onClick={handleNavbarToggle}>
-            <IoIosMenu />
-          </div>
+        <nav className={navBar ? 'navBar activeNavBar' : 'navBar'}>
           <ul>
             {myMenu.map((item, index) => (
               <li key={index} className={location.pathname === item.link ? 'activeNav' : ''}>
@@ -60,8 +59,13 @@ const HeaderNavbar = () => {
             ))}
           </ul>
         </nav>
-        <div className="searchContainer">
-          <Headersearch />
+        <div className='menuContainer'>
+          <div className='menuIcon' >
+            <IoIosMenu onClick={handleNavbarToggle} />
+          </div>
+          <div className="searchContainer">
+            <Headersearch />
+          </div>
         </div>
       </div>
     </>
