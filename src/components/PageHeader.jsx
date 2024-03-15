@@ -28,7 +28,6 @@ const PageHeader = ({ title, pathnames }) => {
         </nav>
       </div>
     </div>
-
   );
 }
 

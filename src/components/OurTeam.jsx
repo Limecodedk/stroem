@@ -6,7 +6,7 @@ import Error from './Error';
 
 
 const OurTeam = () => {
-  const { data, isLoading, error, makeRequest } = useRequestData();
+  const { data, error, makeRequest } = useRequestData();
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   useEffect(() => {

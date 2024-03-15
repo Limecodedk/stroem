@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import useRequestData from '../hooks/useRequestData'
+import Error from '../components/Error'
 
 const BookNow = () => {
-  const { data, isLoading, error, makeRequest } = useRequestData();
+  const { data, error, makeRequest } = useRequestData();
   const [message, setMessage] = useState('');
 
-  //POST Booking formular
   const handleSubmit = async (event) => {
     event.preventDefault();
     let fd = new FormData(event.target)
@@ -27,6 +27,7 @@ const BookNow = () => {
 
   return (
     <section className='bookNowSection'>
+      {error && <Error />}
       <div className="bookNowContainer">
         <h2><span>Book</span> <br /> service nu</h2>
         {data && data.oprettet ? (

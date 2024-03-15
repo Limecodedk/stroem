@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import useRequestData from '../hooks/useRequestData'
 import { FaTwitter, FaVimeo, FaLinkedin, FaFacebook } from 'react-icons/fa';
+import Error from '../components/Error'
 
 const myMenu = [
   {
@@ -32,8 +33,8 @@ const myMenu = [
 
 const Footer = () => {
 
-  const { data, isLoading, error, makeRequest } = useRequestData();
-  const { data: dataSubscrip, isLoading: isLoadingSubscrip, error: errorSubscrip, makeRequest: makeRequestSubscrip } = useRequestData();
+  const { data, error, makeRequest } = useRequestData();
+  const { data: dataSubscrip, error: errorSubscrip, makeRequest: makeRequestSubscrip } = useRequestData();
   const [message, setMessage] = useState('');
   const date = new Date();
   const year = date.getFullYear();
@@ -86,7 +87,7 @@ const Footer = () => {
     <>
       <footer className='footerContainer'>
         <div className="footerContent">
-
+          {error && <Error />}
           <div>
             <img src="/public/asssets/logo.png" alt="" />
             <p>Som medlem af Elinstallatørernes Landsorganisation, ELFO, er vi tilsuttet et ankernævn og en garantiordning</p>
@@ -128,15 +129,12 @@ const Footer = () => {
               </>
             )}
           </div>
-
-
           <div className='footerCopyrigt'>
             <p>
               <span className='textOrange'>Strøm</span>
               &copy; {year} 2017 All Right Reserved
             </p>
           </div>
-
           <div className='footerSocial'>
             {data?.some.map((item, index) => (
               <a href={item.link} key={index} target="_blank" >

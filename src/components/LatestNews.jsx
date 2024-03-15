@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react'
 import useRequestData from '../hooks/useRequestData'
 import { Link } from 'react-router-dom';
 import parse from 'html-react-parser';
+import Error from '../components/Error'
 
 
 const LatestNews = () => {
-  const { data, isLoading, error, makeRequest } = useRequestData();
+  const { data, error, makeRequest } = useRequestData();
   const [latestNews, setLatestNews] = useState([]);
 
   useEffect(() => {
@@ -25,6 +26,7 @@ const LatestNews = () => {
 
   return (
     <section className='latestNewsContainer'>
+      {error && <Error />}
       <div className='latestNewsHeading'>
         <h2>Sidste <span className='textOrange'>nyt</span></h2>
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium temporibus at quasi commodi.</p>

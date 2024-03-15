@@ -1791,6 +1791,8 @@ a {
 
 //425px
 @media only screen and (max-width: 425px) {
+
+  /* Header */
   .headerContainer {
     position: relative;
     background-color: $Onyx;
@@ -1825,10 +1827,14 @@ a {
             list-style-type: none;
             margin: 0;
             background-color: $Onyx;
-            padding: .8em 0;
+            padding: .8em 11px;
 
             a {
               color: $white;
+            }
+
+            &:hover {
+              background-color: $orange;
             }
           }
         }
@@ -1922,7 +1928,6 @@ a {
       }
     }
   }
-
 
   /* Slider */
   .sliderContainer {

@@ -6,10 +6,8 @@ import { IoIosMenu } from 'react-icons/io';
 import Headersearch from '../components/Search/HeaderSearch'
 import HeaderNew from './HeaderNavbar';
 
-
-
 const Header = () => {
-  const { data, isLoading, error, makeRequest } = useRequestData();
+  const { data, error, makeRequest } = useRequestData();
   const [navBar, setNavBar] = useState(false);
   const location = useLocation();
 

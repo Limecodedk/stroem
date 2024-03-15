@@ -34,9 +34,7 @@ const OurService = () => {
         <div className='serviceWomen'>
           <img src="/public/asssets/1.png" alt="handy kvinde med vearktoej i haarden" />
         </div>
-
       </section>
-
     </>
   )
 }

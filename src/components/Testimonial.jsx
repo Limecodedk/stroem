@@ -3,7 +3,7 @@ import useRequestData from '../hooks/useRequestData';
 import Error from './Error';
 
 const Testimonial = () => {
-  const { data, isLoading, error, makeRequest } = useRequestData();
+  const { data, error, makeRequest } = useRequestData();
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -31,7 +31,6 @@ const Testimonial = () => {
     setClicked(true);
   };
 
-
   const handleMouseMove = (e) => {
     if (clicked) {
       const diff = startX - e.clientX;
@@ -55,7 +54,6 @@ const Testimonial = () => {
     setCurrentTestimonial((currentTestimonial - 1 + (data.length || 1)) % (data.length || 1));
   };
 
-  // Beregn antallet af testimonials baseret på skærmstørrelsen
   const testimonialsToShow = windowWidth > 425 ? 3 : 1;
 
   return (

@@ -57,7 +57,7 @@ const AdminNewsCreate = () => {
           style={{}}
         />
         <input type="file" name="image" />
-        <button type='submit' className='btn'>Opdatere</button>
+        <button type='submit' className='btn'>Opret nyhed</button>
       </form >
     </section>
   )

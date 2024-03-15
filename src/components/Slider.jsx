@@ -49,12 +49,10 @@ const Slider = () => {
             <div className="slideContentContainer">
               <div className="overlay"></div>
               <img src={`http://localhost:5333/images/slider/${item.image}`} alt="" />
-
               <div className="sliderContent">
                 <div className="slideText" dangerouslySetInnerHTML={{ __html: item.caption }}></div>
                 <Link className='btn sliderButton' to={'/kontakt'}>Kontakt os</Link>
               </div>
-
             </div>
           </div>
         ))}

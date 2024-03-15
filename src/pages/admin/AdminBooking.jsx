@@ -16,7 +16,6 @@ const AdminBooking = () => {
     makeRequest('http://localhost:5333/booking/admin');
   }, []);
 
-
   const handleDelete = (id, title) => {
     if (window.confirm("Er du sikker på at du vil slette " + title + "?")) {
       makeRequestDelete("http://localhost:5333/booking/admin/" + id,
@@ -69,7 +68,6 @@ const AdminBooking = () => {
           ))}
         </tbody>
       </table>
-
     </section>
   )
 }

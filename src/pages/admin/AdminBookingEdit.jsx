@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import useRequestData from '../../hooks/useRequestData'
 import { MdDelete } from "react-icons/md";
 import Error from '../../components/Error';
@@ -14,6 +14,7 @@ const AdminBookingEdit = () => {
   const [message, setMessage] = useState('');
 
   const combinedError = error || errorUpdate || errorEdit || errorAccept || errorDelete;
+  const navigate = useNavigate()
 
   useEffect(() => {
     makeRequest("http://localhost:5333/booking/admin/" + id,)
@@ -50,13 +51,13 @@ const AdminBookingEdit = () => {
     makeRequest("http://localhost:5333/booking/admin/" + id)
   }
 
-  const handleDelete = async (id, title) => {
-    if (window.confirm("Er du sikker på at du vil slette " + title + "?")) {
+  const handleDelete = async (id, name) => {
+    if (window.confirm("Er du sikker på at du vil slette booking fra " + name + "?")) {
       await makeRequestDelete("http://localhost:5333/booking/admin/" + id,
         {
         }, null, "DELETE")
-      makeRequest("http://localhost:5333/booking/admin/" + id)
     }
+    navigate('/admin/booking')
   }
 
   useEffect(() => {
@@ -64,9 +65,7 @@ const AdminBookingEdit = () => {
   }, [dataDelete, dataAccept, dataEdit])
 
   useEffect(() => {
-    if (dataDelete) {
-      setMessage('Booking blev slettet.');
-    } else if (dataAccept && dataAccept.rettet) {
+    if (dataAccept && dataAccept.rettet) {
       setMessage('Booking status ændret.');
     } else if (dataEdit && dataEdit.rettet) {
       setMessage('Bokking note er ændret')
@@ -99,7 +98,7 @@ const AdminBookingEdit = () => {
               <td><p>{data?.accept ? 'Godkendt' : 'Ikke godkendt'}</p></td>
               <td>{data?.note}</td>
               <td>
-                <MdDelete onClick={() => handleDelete(item._id, item.title)} />
+                <MdDelete onClick={() => handleDelete(data?._id, data?.name)} />
               </td>
             </tr>
           </tbody>
