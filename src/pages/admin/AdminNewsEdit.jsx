@@ -9,7 +9,6 @@ const AdminNewsEdit = () => {
   const { id } = useParams()
   const { data, error, makeRequest } = useRequestData();
   const { data: dataEdit, error: errorEdit, makeRequest: makeRequestEdit } = useRequestData();
-  const [quillContent, setQuillContent] = useState("");
   const combinedError = error || errorEdit;
 
   useEffect(() => {

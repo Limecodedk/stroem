@@ -11,7 +11,6 @@ const Contact = () => {
           Kontakt os
         </Link>
       </section>
-
     </>
   )
 }

@@ -16,13 +16,13 @@ const Slider = () => {
   useEffect(() => {
     startAutoplay();
     return stopAutoplay;
-  }, [data]); // Starter autoplay, når data ændres
+  }, [data]);
 
   const startAutoplay = () => {
     if (data && data.length > 1) {
       autoplayIntervalRef.current = setInterval(() => {
-        setCurrentSlide(prevSlide => (prevSlide + 1) % 2); // Skift mellem de to første slides
-      }, 5000); // Skift hver 5. sekund
+        setCurrentSlide(prevSlide => (prevSlide + 1) % 2);
+      }, 5000);
     }
   };
 
@@ -31,11 +31,11 @@ const Slider = () => {
   };
 
   const handlePrevClick = () => {
-    setCurrentSlide(prevSlide => (prevSlide - 1 + 2) % 2); // Skift mellem de to første slides
+    setCurrentSlide(prevSlide => (prevSlide - 1 + 2) % 2);
   };
 
   const handleNextClick = () => {
-    setCurrentSlide(prevSlide => (prevSlide + 1) % 2); // Skift mellem de to første slides
+    setCurrentSlide(prevSlide => (prevSlide + 1) % 2);
   };
 
   const filteredData = data?.slice(0, 2);
@@ -58,7 +58,7 @@ const Slider = () => {
         ))}
       </div>
       <div className="sliderControls">
-        <MdNavigateNext onClick={handleNextClick} className='prev' />
+        <MdNavigateNext onClick={handlePrevClick} className='prev' />
         <MdNavigateNext onClick={handleNextClick} className='next' />
       </div>
     </section>

@@ -115,7 +115,7 @@ const AdminBookingEdit = () => {
 
       <form className='bookingNoteForm' onSubmit={e => handleSubmit(e)}>
         <label htmlFor="note">Tilføj note kort note (max 50tegn):</label>
-        <textarea name="note" cols="30" rows="10" maxLength={50} defaultValue={data?.note}></textarea>
+        <textarea name="note" cols="30" rows="10" maxLength={50} defaultValue={data?.note} required></textarea>
         <button type="submit" className='btn'>Gem</button>
       </form>
       <p className='textOrange'>{message}</p>

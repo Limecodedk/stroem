@@ -11,8 +11,6 @@ const AboutStroem = () => {
     makeRequest("http://localhost:5333/about")
   }, [])
 
-
-
   return (
     <>
       <section className='AboutSection'>
