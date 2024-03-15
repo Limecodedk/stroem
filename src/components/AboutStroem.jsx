@@ -13,7 +13,7 @@ const AboutStroem = () => {
 
   return (
     <>
-      <section className='AboutSection'>
+      <article className='AboutSection'>
         {error && <Error />}
         <h2>{data?.title}</h2>
         <p>
@@ -22,7 +22,7 @@ const AboutStroem = () => {
         <Link to={'/'} className='btn effect1'>
           Læs mere
         </Link>
-      </section>
+      </article>
     </>
   )
 }
