@@ -81,6 +81,12 @@ a {
     color: $orange;
     border: 1px solid $orange;
   }
+
+  &:hover.effect3 {
+    background-color: rgb(255, 255, 255);
+    color: $orange;
+    border: 1px solid $orange;
+  }
 }
 
 
@@ -266,15 +272,15 @@ a {
 
     .sliderContent {
       position: absolute;
-      top: 50%;
-      left: 50%;
+      top: 40%;
+      left: 40%;
       width: max-content;
       transform: translate(-50%, -50%);
       padding: 10px;
       z-index: 99;
       color: $white;
       text-align: center;
-      animation: textAnimation ease 1.5s normal forwards;
+      animation: fade-in-left 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 
       span {
         font-size: 4rem;
@@ -284,10 +290,11 @@ a {
     .sliderButton {
       position: absolute;
       top: 100%;
-      left: 50%;
+      left: 30%;
       transform: translate(-50%, -50%);
       z-index: 99;
       margin: 2em 0;
+      animation: slide-in-bottom 2s cubic-bezier(0.550, 0.085, 0.680, 0.530) forwards;
     }
   }
 
@@ -317,16 +324,31 @@ a {
 }
 
 //Slider animation
-@keyframes textAnimation {
+@keyframes fade-in-left {
   0% {
+    -webkit-transform: translateX(-50px);
+    transform: translateX(-50px);
     opacity: 0;
-    left: 0%;
   }
 
   100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
     opacity: 1;
-    left: 50%;
   }
+}
+
+@keyframes slide-in-bottom {
+  0% {
+    transform: translateY(1000px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
 }
 
 /* About Section */
@@ -594,6 +616,7 @@ a {
         transition: transform 0.5s ease-out;
         color: $white;
         clip-path: polygon(51% 19%, 100% 10%, 100% 100%, 0 100%, 0 0);
+        border-radius: 0 0 8px 8px;
 
 
         h2,

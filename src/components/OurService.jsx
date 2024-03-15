@@ -3,6 +3,7 @@ import useRequestData from '../hooks/useRequestData'
 import '../styles/flaticon.css'
 import Error from './Error'
 import Loader from './Loader'
+import { Link } from 'react-router-dom'
 
 
 const OurService = () => {
@@ -25,7 +26,9 @@ const OurService = () => {
             <div key={index} className='serviceItem'>
               <i className={`flaticon ${item.icon}`}></i>
               <div>
-                <h3>{item.title}</h3>
+                <Link to={'/service/'}>
+                  <h3>{item.title}</h3>
+                </Link>
                 <p>{item.teaser}</p>
               </div>
             </div>

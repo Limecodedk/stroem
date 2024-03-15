@@ -143,7 +143,7 @@ const Footer = () => {
             ))}
           </div>
         </div>
-        <div className="backToTop btn" onClick={handleScrollToTop}>
+        <div className="backToTop btn effect3" onClick={handleScrollToTop}>
           &#10092;
         </div>
       </footer >
