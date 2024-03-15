@@ -23,7 +23,6 @@ const Services = () => {
     }
   }, [data]);
 
-
   const handleServiceSelect = (service) => {
     setSelectedService(service);
   };
